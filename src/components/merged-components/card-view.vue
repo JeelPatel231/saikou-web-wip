@@ -1,0 +1,86 @@
+<template>
+  <!-- 2 VIEW MODES, 'slide-view' AND 'grid-view' -->
+  <div v-if="cardsize == 'small'" v-bind:class="viewmode">
+    <cardSmall v-for="item in response" :key="item" :carddata="item" />
+  </div>
+
+  <!-- 2 VIEW MODES, 'LIST' AND 'CAROUSEL' -->
+  <div v-if="cardsize == 'big'" v-bind:class="viewmode">
+    <cardBig v-for="item in response" :key="item" :carddata="item" />
+  </div>
+</template>
+
+<script>
+// you can pass either ( query and variables ) or (api response itself) to this component
+
+import cardSmall from "@/components/small-components/card-small.vue";
+import { executeQuery } from "@/js/anilist";
+import addSlider from "@/js/slider";
+import cardBig from "../small-components/card-big.vue";
+
+export default {
+  name: "cardView",
+  components: {
+    cardSmall,
+    cardBig,
+  },
+  props: ["carddatalist", "viewmode", "query", "variables", "cardsize"],
+  data() {
+    return {
+      response: [], // assign response as variable , but this makes the component update 2x
+    };
+  },
+  mounted() {
+    if (this.viewmode == "slide-view") {
+      addSlider(".slide-view"); // add mouse drag slider if slideview is rendered
+    }
+  },
+  updated() {
+    if (this.carddatalist != undefined) {
+      this.response = this.carddatalist; // if cardlist is defined, move array to response
+    }
+  },
+  created() {
+    if (this.query != undefined) {
+      executeQuery(this.query, this.variables).then((x) => {
+        this.response = x.data.Page.media; // if query is defined, make a call and move array to response
+        console.log(this.response);
+      }); // execute query
+    } // if statement
+  }, // created()
+};
+</script>
+
+<style lang="scss">
+.slide-view {
+  display: flex;
+  overflow: auto;
+  width: 100vw;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  scrollbar-width: none;
+
+  .card {
+    margin: 10px;
+  }
+}
+
+.grid-view {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  max-height: calc(100vh - 60px);
+  overflow: scroll;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  scrollbar-width: none;
+
+  .card {
+    margin: 10px;
+  }
+}
+</style>
