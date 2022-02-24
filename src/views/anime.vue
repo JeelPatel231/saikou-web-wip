@@ -1,5 +1,13 @@
 <template>
-  <cardview cardsize="big" :query="query" :variables="variables" />
+  <!-- <cardview cardsize="big" :query="AnilistQueries.recentlyUpdated" arrayPath="data.Page.airingSchedules" /> -->
+  <cardview cardsize="big" :query="AnilistQueries.searchQuery()" arrayPath="data.Page.media" />
+
+  <!-- <cardview cardsize="big" :query="AnilistQueries.searchQuery()" :variables="{
+        page: 1,
+        sort: ['TRENDING_DESC', 'POPULARITY_DESC'],
+        type: 'ANIME',
+      }
+      " />  -->
 </template>
 
 <script>
@@ -13,12 +21,7 @@ export default {
   },
   data() {
     return {
-      query: AnilistQueries.searchQuery(),
-      variables: {
-        page: 1,
-        sort: ["TRENDING_DESC", "POPULARITY_DESC"],
-        type: "ANIME",
-      },
+      AnilistQueries: AnilistQueries,
     };
   },
   props: ["carddata"],

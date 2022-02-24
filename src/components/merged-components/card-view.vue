@@ -1,12 +1,13 @@
 <template>
-  <!-- 2 VIEW MODES, 'slide-view' AND 'grid-view' -->
-  <div v-if="cardsize == 'small'" v-bind:class="viewmode">
-    <cardSmall v-for="item in response" :key="item" :carddata="item" />
-  </div>
-
-  <!-- 2 VIEW MODES, 'LIST' AND 'CAROUSEL' -->
-  <div v-if="cardsize == 'big'" v-bind:class="viewmode">
-    <cardBig v-for="item in response" :key="item" :carddata="item" />
+  <div v-bind:class="viewmode">
+    <template v-if="cardsize == 'small'">
+      <!-- 2 VIEW MODES, 'slide-view' AND 'grid-view' -->
+        <cardSmall  v-for="item in response" :key="item" :carddata="(item instanceof Array) ? item.media : item" />
+    </template>
+    <template v-if="cardsize == 'big'">
+      <!-- 2 VIEW MODES, 'LIST' AND 'CAROUSEL' -->
+        <cardBig v-for="item in response" :key="item" :carddata="(item instanceof Array) ? item.media : item" />
+    </template>
   </div>
 </template>
 
@@ -24,7 +25,7 @@ export default {
     cardSmall,
     cardBig,
   },
-  props: ["carddatalist", "viewmode", "query", "variables", "cardsize"],
+  props: ["carddatalist", "viewmode", "query", "variables", "cardsize", "arrayPath"],
   data() {
     return {
       response: [], // assign response as variable , but this makes the component update 2x
@@ -43,7 +44,8 @@ export default {
   created() {
     if (this.query != undefined) {
       executeQuery(this.query, this.variables).then((x) => {
-        this.response = x.data.Page.media; // if query is defined, make a call and move array to response
+        x; // placebo for error
+        this.response = eval(`x.${this.arrayPath}`); // if query is defined, make a call and move array to response
         console.log(this.response);
       }); // execute query
     } // if statement

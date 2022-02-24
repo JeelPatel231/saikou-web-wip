@@ -41,7 +41,6 @@ export const AnilistQueries = new (class {
           bannerImage
           coverImage {
             large
-            extraLarge
           }
           title {
             english
@@ -72,31 +71,30 @@ export const AnilistQueries = new (class {
   		){
   			media{
   				id
-  				status
-  				chapters
-  				episodes
-  				nextAiringEpisode{
-  					episode
-  				}
-  				isAdult
-  				type
-  				meanScore
-  				isFavourite
-  				bannerImage
-  				countryOfOrigin
-  				coverImage{
-  					large
-  				}
-  				title{
-  					english
-  					romaji
-  					userPreferred
-  				}
-  				mediaListEntry{
-  					progress
-  					score(format: POINT_100)
-  					status
-  				}
+          isAdult
+          status
+          chapters
+          episodes
+          nextAiringEpisode {
+            episode
+          }
+          type
+          meanScore
+          isFavourite
+          bannerImage
+          coverImage {
+            large
+          }
+          title {
+            english
+            romaji
+            userPreferred
+          }
+          mediaListEntry {
+            progress
+            score(format: POINT_100)
+            status
+          }
   			}
   		}
   	}
