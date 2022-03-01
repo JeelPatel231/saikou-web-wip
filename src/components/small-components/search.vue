@@ -27,7 +27,7 @@ import { AnilistQueries, executeQuery } from "@/js/anilist";
 import cardView from "@/components/merged-components/card-view.vue";
 
 export default {
-  name: "home",
+  name: "searchbar",
   components: {
     cardView,
   },

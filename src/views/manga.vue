@@ -1,14 +1,14 @@
 <template>
-  <search fragment="MANGA" />
+  <searchbar fragment="MANGA" />
 </template>
 
 <script>
-import search from "@/components/small-components/search.vue";
+import searchbar from "@/components/small-components/search.vue";
 
 export default {
   name: "Manga",
   components: {
-    search,
+    searchbar,
   },
 };
 </script>
