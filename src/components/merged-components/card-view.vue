@@ -17,7 +17,7 @@
 import cardSmall from "@/components/small-components/card-small.vue";
 import { executeQuery } from "@/js/anilist";
 import addSlider from "@/js/slider";
-import cardBig from "../small-components/card-big.vue";
+import cardBig from "@/components/small-components/card-big.vue";
 
 export default {
   name: "cardView",
@@ -29,6 +29,7 @@ export default {
   data() {
     return {
       response: [], // assign response as variable , but this makes the component update 2x
+      page:1, // anilist page starts a @ 1 rather 0
     };
   },
   mounted() {
@@ -41,13 +42,32 @@ export default {
       this.response = this.carddatalist; // if cardlist is defined, move array to response
     }
   },
+  methods:{
+    apicall(){
+      if (this.query != undefined) {
+        executeQuery(this.query, Object.assign({},this.variables,{page:this.page})).then((x) => {
+          x; // placebo for error
+          this.response = this.response.concat(eval(`x.${this.arrayPath}`)); // if query is defined, make a call and move array to response
+          console.log(this.response);
+        }); // execute query
+      } // if statement
+    } // api call()
+  },
   created() {
-    if (this.query != undefined) {
-      executeQuery(this.query, this.variables).then((x) => {
-        x; // placebo for error
-        this.response = eval(`x.${this.arrayPath}`); // if query is defined, make a call and move array to response
-        console.log(this.response);
-      }); // execute query
+    this.apicall()
+    if (this.cardsize == 'big'){
+      // console.log("assigned onscroll event")
+      window.onscroll = () => {
+        let bottomOfWindow =
+          document.documentElement.scrollTop + window.innerHeight ===
+          document.documentElement.offsetHeight;
+        if (bottomOfWindow) {
+          // console.log("bottom");
+          this.page++
+          console.log(this.page);
+          this.apicall();
+        }
+      }; // on scroll event
     } // if statement
   }, // created()
 };
