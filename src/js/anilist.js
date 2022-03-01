@@ -15,10 +15,9 @@ export function executeQuery(query, variables) {
 }
 
 export const AnilistQueries = new (class {
-  searchQuery(perPage = 50) {
-    return `
-    query ($page: Int = 1, $id: Int, $type: MediaType, $isAdult: Boolean = false, $search: String, $format: [MediaFormat], $status: MediaStatus, $countryOfOrigin: CountryCode, $source: MediaSource, $season: MediaSeason, $seasonYear: Int, $year: String, $onList: Boolean, $yearLesser: FuzzyDateInt, $yearGreater: FuzzyDateInt, $episodeLesser: Int, $episodeGreater: Int, $durationLesser: Int, $durationGreater: Int, $chapterLesser: Int, $chapterGreater: Int, $volumeLesser: Int, $volumeGreater: Int, $licensedBy: [String], $isLicensed: Boolean, $genres: [String], $excludedGenres: [String], $tags: [String], $excludedTags: [String], $minimumTagRank: Int, $sort: [MediaSort] = [POPULARITY_DESC, SCORE_DESC]) {
-      Page(page: $page, perPage: ${perPage}) {
+  searchQuery = `
+    query ($page: Int = 1, $perPage : Int, $id: Int, $type: MediaType, $isAdult: Boolean = false, $search: String, $format: [MediaFormat], $status: MediaStatus, $countryOfOrigin: CountryCode, $source: MediaSource, $season: MediaSeason, $seasonYear: Int, $year: String, $onList: Boolean, $yearLesser: FuzzyDateInt, $yearGreater: FuzzyDateInt, $episodeLesser: Int, $episodeGreater: Int, $durationLesser: Int, $durationGreater: Int, $chapterLesser: Int, $chapterGreater: Int, $volumeLesser: Int, $volumeGreater: Int, $licensedBy: [String], $isLicensed: Boolean, $genres: [String], $excludedGenres: [String], $tags: [String], $excludedTags: [String], $minimumTagRank: Int, $sort: [MediaSort] = [POPULARITY_DESC, SCORE_DESC]) {
+      Page(page: $page, perPage: $perPage) {
         pageInfo {
           total
           perPage
@@ -56,10 +55,10 @@ export const AnilistQueries = new (class {
       }
     }
     `;
-  }
 
-  recentlyUpdated = `{
-  	Page(page: 1, perPage: 50){
+  recentlyUpdated = `
+  query ($page: Int = 1, $perPage : Int ) {
+  	Page(page: $page, perPage: $perPage){
   		pageInfo{
   			hasNextPage
   			total
