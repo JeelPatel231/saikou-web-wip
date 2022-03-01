@@ -43,7 +43,7 @@ export default {
         type: this.$refs.searchText.attributes.fragment.value,
         search: this.$refs.searchText.value,
       };
-      executeQuery(AnilistQueries.searchQuery(), variables).then((x) => {
+      executeQuery(AnilistQueries.searchQuery, variables).then((x) => {
         this.response = x.data.Page.media;
         console.log(this.response);
       });
