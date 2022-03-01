@@ -2,11 +2,11 @@
   <div v-bind:class="viewmode">
     <template v-if="cardsize == 'small'">
       <!-- 2 VIEW MODES, 'slide-view' AND 'grid-view' -->
-        <cardSmall  v-for="item in response" :key="item" :carddata="(item instanceof Array) ? item.media : item" />
+        <cardSmall v-for="item in response" :key="item" :carddata="item.media ? item.media : item" />
     </template>
     <template v-if="cardsize == 'big'">
       <!-- 2 VIEW MODES, 'LIST' AND 'CAROUSEL' -->
-        <cardBig v-for="item in response" :key="item" :carddata="(item instanceof Array) ? item.media : item" />
+        <cardBig v-for="item in response" :key="item" :carddata="item.media ? item.media : item" />
     </template>
   </div>
 </template>
@@ -25,7 +25,7 @@ export default {
     cardSmall,
     cardBig,
   },
-  props: ["carddatalist", "viewmode", "query", "variables", "cardsize", "arrayPath"],
+  props: ["carddatalist", "viewmode", "query", "variables", "cardsize", "arrayPath","pagination"],
   data() {
     return {
       response: [], // assign response as variable , but this makes the component update 2x
@@ -55,7 +55,7 @@ export default {
   },
   created() {
     this.apicall()
-    if (this.cardsize == 'big'){
+    if (this.pagination == true){ // add listener only if said
       // console.log("assigned onscroll event")
       window.onscroll = () => {
         let bottomOfWindow =
