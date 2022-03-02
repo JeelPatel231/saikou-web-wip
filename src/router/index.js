@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import Home from "@/views/home.vue";
 import Anime from "@/views/anime.vue";
 import Manga from "@/views/manga.vue";
+import Search from "@/views/search.vue";
 
 const routes = [
   {
@@ -18,6 +19,11 @@ const routes = [
     path: "/manga",
     name: "Manga",
     component: Manga,
+  },
+  {
+    path: "/search",
+    name: "Search",
+    component: Search,
   },
   // {
   //   path: "/manga",
