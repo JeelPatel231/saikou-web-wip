@@ -93,8 +93,6 @@ export default {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  max-height: calc(100vh - 60px);
-  overflow: scroll;
 
   &::-webkit-scrollbar {
     display: none;
