@@ -3,6 +3,7 @@ import Home from "@/views/home.vue";
 import Anime from "@/views/anime.vue";
 import Manga from "@/views/manga.vue";
 import Search from "@/views/search.vue";
+import Info from "@/views/info.vue";
 
 const routes = [
   {
@@ -24,6 +25,11 @@ const routes = [
     path: "/search",
     name: "Search",
     component: Search,
+  },
+  {
+    path: "/info/:id",
+    name: "Info",
+    component: Info,
   },
   // {
   //   path: "/manga",
