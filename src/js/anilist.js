@@ -98,4 +98,6 @@ export const AnilistQueries = new (class {
   		}
   	}
   }`;
+
+  genreCollection = `{ GenreCollection }`
 })();
