@@ -30,8 +30,19 @@
     <div class="filter-view">
       <span v-on:click="delete genrefilters[filter]" v-for="filter in Object.keys(genrefilters)" :key="filter">{{filter}}</span>
     </div>
+    <div class="searchresults">
+      Search Results
+      <div class="toggleviewbtns">
+        <span v-on:click="cardsize = 'big'" class="material-icons">
+          view_list
+        </span>
+        <span v-on:click="cardsize = 'small'" class="material-icons">
+          grid_view
+        </span>
+      </div>
+    </div>
     <cardView
-      cardsize="small"
+      :cardsize="cardsize"
       viewmode="grid-view"
       v-bind:carddatalist="this.response"
     />
@@ -60,6 +71,7 @@ export default {
         "TRASH": "SCORE"
       }, // list of all sorts
       genrefilters:{},
+      cardsize:"big",
       sortfilter:"POPULARITY", // string for now since only 1 sort filter is allowed
     };
   },
@@ -70,7 +82,7 @@ export default {
         type: this.$refs.searchText.attributes.fragment.value, // MANGA || ANIME
         genres:Object.keys(this.genrefilters).length ? Object.keys(this.genrefilters) : null, // list of all genres selected
         search: this.$refs.searchText.value ? this.$refs.searchText.value : null, // because "" doesnt match anything, null makes an empty query
-        sort:[this.sorts[this.sortfilter]]
+        sort:[this.sorts[this.sortfilter]] // pass sort filter as array
       };
       executeQuery(AnilistQueries.searchQuery, variables).then((x) => {
         this.response = x.data.Page.media;
@@ -85,6 +97,21 @@ export default {
 </script>
 
 <style lang="scss">
+.searchresults{
+  display: flex;
+  font-size: 1.6rem;
+  align-items: center;
+  .toggleviewbtns{
+    margin-left: auto;
+    margin-right: 10px;
+    span.material-icons {
+      color: white;
+      background-color: #08f;
+      border-radius: 40px;
+      padding: 10px;
+    }
+  }
+}
 
 .filter-view{
   padding: 10px;
