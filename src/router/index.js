@@ -3,8 +3,9 @@ import Home from "@/views/home.vue";
 import Anime from "@/views/anime.vue";
 import Manga from "@/views/manga.vue";
 import Search from "@/views/search.vue";
-import Info from "@/views/info.vue";
-import Watch from "@/views/watch.vue";
+import Media from "@/views/media.vue";
+import watchtab from "@/components/small-components/watchtab.vue";
+import infotab from "@/components/small-components/infotab.vue";
 
 const routes = [
   {
@@ -28,14 +29,25 @@ const routes = [
     component: Search,
   },
   {
-    path: "/info/:id",
-    name: "Info",
-    component: Info,
-  },
-  {
-    path: "/watch/:id",
-    name: "Watch",
-    component: Watch,
+    path: "/media/",
+    name: "Media",
+    component: Media,
+    children : [
+      {
+        path:"info/:id",
+        name:"Info",
+        components:{
+          tab:infotab,
+        } 
+      },
+      {
+        path:"watch/:id",
+        name:"Watch",
+        components:{
+          tab:watchtab,
+        }
+      }
+    ]
   },
   // {
   //   path: "/manga",
