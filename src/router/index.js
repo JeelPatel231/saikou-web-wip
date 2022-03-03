@@ -4,6 +4,7 @@ import Anime from "@/views/anime.vue";
 import Manga from "@/views/manga.vue";
 import Search from "@/views/search.vue";
 import Info from "@/views/info.vue";
+import Watch from "@/views/watch.vue";
 
 const routes = [
   {
@@ -30,6 +31,11 @@ const routes = [
     path: "/info/:id",
     name: "Info",
     component: Info,
+  },
+  {
+    path: "/watch/:id",
+    name: "Watch",
+    component: Watch,
   },
   // {
   //   path: "/manga",
