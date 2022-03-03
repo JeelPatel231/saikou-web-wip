@@ -99,5 +99,153 @@ export const AnilistQueries = new (class {
   	}
   }`;
 
-  genreCollection = `{ GenreCollection }`
+  genreCollection = `{ GenreCollection }`;
+
+  mediaInfo = `
+  query ($id: Int){
+    Media(id: $id) {
+      mediaListEntry {
+        id
+        status
+        score(format: POINT_100)
+        progress
+        repeat
+        updatedAt
+        startedAt {
+          year
+          month
+          day
+        }
+        completedAt {
+          year
+          month
+          day
+        }
+      }
+      meanScore
+      episodes
+      status
+      title {
+        romaji
+        userPreferred
+      }
+      coverImage {
+        large
+      }
+      bannerImage
+      isFavourite
+      siteUrl
+      idMal
+      nextAiringEpisode {
+        episode
+        airingAt
+      }
+      source
+      countryOfOrigin
+      format
+      duration
+      season
+      seasonYear
+      startDate {
+        year
+        month
+        day
+      }
+      endDate {
+        year
+        month
+        day
+      }
+      genres
+      studios(isMain: true) {
+        nodes {
+          id
+          name
+          siteUrl
+        }
+      }
+      description
+      characters(sort: [ROLE, FAVOURITES_DESC], perPage: 25, page: 1) {
+        edges {
+          role
+          node {
+            id
+            image {
+              medium
+            }
+            name {
+              userPreferred
+            }
+          }
+        }
+      }
+      relations {
+        edges {
+          relationType(version: 2)
+          node {
+            id
+            mediaListEntry {
+              progress
+              score(format: POINT_100)
+              status
+            }
+            episodes
+            chapters
+            nextAiringEpisode {
+              episode
+            }
+            meanScore
+            isAdult
+            isFavourite
+            title {
+              english
+              romaji
+              userPreferred
+            }
+            type
+            status(version: 2)
+            bannerImage
+            coverImage {
+              large
+            }
+          }
+        }
+      }
+      recommendations {
+        nodes {
+          mediaRecommendation {
+            id
+            mediaListEntry {
+              progress
+              score(format: POINT_100)
+              status
+            }
+            episodes
+            chapters
+            nextAiringEpisode {
+              episode
+            }
+            meanScore
+            isAdult
+            isFavourite
+            title {
+              english
+              romaji
+              userPreferred
+            }
+            type
+            status(version: 2)
+            bannerImage
+            coverImage {
+              large
+            }
+          }
+        }
+      }
+      externalLinks {
+        url
+        site
+      }
+    }
+  }`
 })();
