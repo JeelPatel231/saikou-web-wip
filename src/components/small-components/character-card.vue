@@ -1,0 +1,110 @@
+<template>
+  <div class="card unselectable">
+    <div class="animecard-span">
+      <span class="skeleton">
+        <span class="skeleton-wiper" />
+      </span>
+      <img
+        v-lazy="{
+          src: carddata.node.image.medium,
+          lifecycle: lazyOptions.lifecycle,
+        }"
+        class="coverimage"
+      />
+    </div>
+    <div class="info">
+      <div class="name">
+          {{ carddata.node.name.userPreferred }}
+      </div>
+      <div class="role">
+        {{ carddata.role }}
+      </div>
+    </div>
+    <span class="clear-overlay" />
+  </div>
+</template>
+
+<script>
+import { reactive } from "vue";
+
+export default {
+  name: "cardSmall",
+  props: {
+    carddata: {},
+  },
+  setup() {
+    const lazyOptions = reactive({
+      lifecycle: {
+        loaded: (el) => {
+          el.parentNode.querySelector("span").remove(); // find a better way to remove skeleton class
+        },
+      },
+    });
+    return {
+      lazyOptions,
+    };
+  },
+};
+</script>
+
+<style lang="scss" scoped>
+.role{
+    text-align: end;
+}
+.coverimage {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+.animecard-span {
+  height: 200px;
+  border-radius: 20px;
+  overflow: hidden;
+  position: relative;
+}
+
+.card {
+  position: relative;
+  width: 130px;
+  flex-shrink: 0;
+}
+
+.clear-overlay {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.skeleton {
+  background: #595858;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.skeleton-wiper {
+  @keyframes wipe {
+    0% {
+      top: -100px;
+    }
+    50% {
+      top: 250px;
+    }
+    100% {
+      top: 250px;
+    }
+  }
+
+  position: absolute;
+  background: linear-gradient(#eee0, #eee, #eee, #eee0);
+  height: 20%;
+  width: 200%;
+  transform: rotate(-45deg);
+  top: -10px;
+  bottom: 0px;
+  right: -50%;
+  animation: wipe 2s ease infinite;
+}
+</style>

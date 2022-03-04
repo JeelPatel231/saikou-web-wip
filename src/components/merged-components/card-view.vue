@@ -8,6 +8,10 @@
       <!-- 2 VIEW MODES, 'LIST' AND 'CAROUSEL' -->
         <cardBig v-for="item in response" :key="item" :carddata="eval(item,nestedPath)" />
     </template>
+    <template v-if="cardsize == 'character'">
+      <!-- 2 VIEW MODES, 'LIST' AND 'CAROUSEL' -->
+        <CharacterCard v-for="item in response" :key="item" :carddata="item" />
+    </template>
   </div>
 </template>
 
@@ -18,13 +22,15 @@ import cardSmall from "@/components/small-components/card-small.vue";
 import { executeQuery } from "@/js/anilist";
 import addSlider from "@/js/slider";
 import cardBig from "@/components/small-components/card-big.vue";
+import CharacterCard from "../small-components/character-card.vue";
 
 export default {
   name: "cardView",
   components: {
     cardSmall,
     cardBig,
-  },
+    CharacterCard
+},
   props: ["carddatalist", "viewmode", "query", "variables", "cardsize", "arrayPath","pagination","nestedPath","relation"],
   data() {
     return {
@@ -87,7 +93,7 @@ export default {
 .slide-view {
   display: flex;
   overflow: auto;
-  width: 100vw;
+  width: 100%;
 
   &::-webkit-scrollbar {
     display: none;
