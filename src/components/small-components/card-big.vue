@@ -54,7 +54,7 @@ export default {
 
 .covercard {
   width: 400px;
-  border-radius: 20px;
+  border-radius: 28px;
   display: flex;
   position: relative;
   overflow: hidden;
@@ -62,6 +62,7 @@ export default {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
+  margin-bottom: 16px;
 
   img {
     object-fit: cover;
@@ -71,7 +72,7 @@ export default {
   }
 
   .card {
-    margin: 15px;
+    margin: 16px;
   }
 }
 .info {
@@ -81,7 +82,9 @@ export default {
   padding: 10px;
   color: #fff;
   position: relative;
-
+  .name{
+    font-weight: 700;
+  }
   & > * {
     margin: 0 0 10px 0;
   }

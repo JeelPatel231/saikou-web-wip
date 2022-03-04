@@ -18,7 +18,7 @@ export default {
 
 <style lang="scss">
 .genre {
-  width: 150px;
+  width: 140px;
   background: #009fff;
   border-radius: 20px;
   display: flex;
@@ -28,9 +28,9 @@ export default {
   font-size: 20px;
   font-weight: bold;
   position: relative;
+  margin: 4px;
   overflow: hidden;
-
-  padding: 10px 0;
+  padding: 12px 0;
 
   img {
     object-fit: cover;

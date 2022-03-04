@@ -12,7 +12,7 @@
         class="coverimage"
       />
       <div v-if="carddata.meanScore" class="score">
-        {{ carddata.meanScore }}
+        {{ carddata.meanScore/10 }}
         <span class="material-icons-round">star</span>
       </div>
     </div>
@@ -95,9 +95,10 @@ span[lazy="loaded"] {
 
 .animecard-span {
   height: 200px;
-  border-radius: 20px;
+  border-radius: 16px;
   overflow: hidden;
   position: relative;
+  box-shadow: 0px 0px 16px 0 #6060608c;
 }
 
 .card {
@@ -110,12 +111,18 @@ span[lazy="loaded"] {
   position: absolute;
   bottom: 0px;
   right: 0px;
-  padding: 3px 7px 3px 7px;
-  background: red;
+  padding: 2px 6px 0px 12px;
+  background: #ff0080bf;
   color: #fff;
-  font-size: 14px;
+  display: flex;
+  line-height: 1.3rem;
+  font-size: 0.8rem;
   font-weight: bold;
-  border-radius: 10px 0 0 0;
+  border-radius: 24px 0 0 0;
+  align-items: center;
+  span.material-icons-round{
+    margin-bottom:0.125rem
+  }
 }
 
 .episode-info {

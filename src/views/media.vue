@@ -1,18 +1,20 @@
 <template>
     <infoheader :response="response"/>
-    <div class="tabbar">
-        <router-link :to="{name:'Info'}">
-            <div class="tab-item">INFO</div>
-        </router-link>
-        <router-link :to="{name:'Watch'}">
-            <div class="tab-item">WATCH</div>
-        </router-link>
+    <div style="background-color: #eee;">
+        <div class="tabbar">
+            <router-link :to="{name:'Info'}">
+                <div class="tab-item">INFO</div>
+            </router-link>
+            <router-link :to="{name:'Watch'}">
+                <div class="tab-item">WATCH</div>
+            </router-link>
+        </div>
+        <router-view name="tab" :id="this.$route.params.id" :details="response" v-slot="{ Component }">
+            <keep-alive>
+                <component :is="Component" />
+            </keep-alive>
+        </router-view>
     </div>
-    <router-view name="tab" :id="this.$route.params.id" :details="response" v-slot="{ Component }">
-        <keep-alive>
-            <component :is="Component" />
-        </keep-alive>
-    </router-view>
 </template>
 
 <script>
@@ -36,15 +38,17 @@ export default {
 
 <style scoped lang="scss">
 .tabbar{
-    margin: 0 auto;
     display: flex;
     text-align: center;
     align-items: center;
     font-size: 1.3rem;
-    flex:1;
-    max-width: 1400px;
-    position: relative;
-    box-shadow: 0px 8px 15px 0 #606060c9;
+    background: #ffff;
+    flex: 1;
+    font-weight: 700;
+    top: 0;
+    position: sticky;
+    z-index: 1;
+    box-shadow: 0px 4px 8px 0 #60606070;
     &>*{
         flex:1;
         padding:10px 0;

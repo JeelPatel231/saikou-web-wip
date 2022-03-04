@@ -61,6 +61,7 @@ export default {
   border-radius: 20px;
   overflow: hidden;
   position: relative;
+  box-shadow: 0px 0px 16px 0 #6060608c;
 }
 
 .card {

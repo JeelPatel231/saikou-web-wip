@@ -102,10 +102,17 @@ export default {
 
   .card {
     margin: 10px;
+    &:first-child{
+      margin-left: 24px;
+    }
+    &:last-child{
+      margin-right: 24px;
+    }
   }
 }
 
 .grid-view {
+  margin-top: 16px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
