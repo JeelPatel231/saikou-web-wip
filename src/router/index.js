@@ -34,14 +34,14 @@ const routes = [
     component: Media,
     children : [
       {
-        path:"info/:id",
+        path:"info/:id(\\d+)",
         name:"Info",
         components:{
           tab:infotab,
         } 
       },
       {
-        path:"watch/:id",
+        path:"watch/:id(\\d+)",
         name:"Watch",
         components:{
           tab:watchtab,
