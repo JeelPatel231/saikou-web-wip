@@ -10,7 +10,7 @@
             </router-link>
         </div>
     </div>
-    <router-view name="tab" :id="this.$route.params.id" :infoprop="response" v-slot="{ Component }">
+    <router-view name="tab" :id="this.$route.params.id" :details="response" v-slot="{ Component }">
         <keep-alive>
             <component :is="Component" />
         </keep-alive>
