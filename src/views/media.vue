@@ -45,11 +45,21 @@ export default {
 .tabbar{
     display: flex;
     text-align: center;
-    background: #08f;
     align-items: center;
     font-size: 1.3rem;
     flex:1;
     max-width: 1400px;
+    position: relative;
+    background: #fff;
+    &::after {
+        content: "";
+        position: absolute;
+        bottom: 0px;
+        z-index: -1;
+        transform: scale(0.97);
+        box-shadow: 0px 0px 16px 2px #000;
+        width: 100%;
+    }
     &>*{
         flex:1;
         padding:10px 0;
