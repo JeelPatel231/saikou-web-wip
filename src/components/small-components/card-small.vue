@@ -17,6 +17,12 @@
       </div>
     </div>
     <div class="info" v-if="carddata.title && infoVisible">
+      <!-- show relation if passed as prop -->
+      <div v-if="relation" class="relation">
+        {{carddata.type}}
+        {{relation}}
+      </div>
+
       <div class="anime-name">
         {{ carddata.title.userPreferred }}
       </div>
@@ -43,6 +49,7 @@ import { reactive } from "vue";
 export default {
   name: "cardSmall",
   props: {
+    relation:{},
     carddata: {},
     infoVisible: {
       default: true,

@@ -2,7 +2,7 @@
   <div v-bind:class="viewmode" ref="view">
     <template v-if="cardsize == 'small'">
       <!-- 2 VIEW MODES, 'slide-view' AND 'grid-view' -->
-        <cardSmall v-for="item in response" :key="item" :carddata="eval(item,nestedPath)" />
+        <cardSmall v-for="item in response" :key="item" :relation="item.relationType" :carddata="eval(item,nestedPath)" />
     </template>
     <template v-if="cardsize == 'big'">
       <!-- 2 VIEW MODES, 'LIST' AND 'CAROUSEL' -->
@@ -25,7 +25,7 @@ export default {
     cardSmall,
     cardBig,
   },
-  props: ["carddatalist", "viewmode", "query", "variables", "cardsize", "arrayPath","pagination","nestedPath"],
+  props: ["carddatalist", "viewmode", "query", "variables", "cardsize", "arrayPath","pagination","nestedPath","relation"],
   data() {
     return {
       response: [], // assign response as variable , but this makes the component update 2x
