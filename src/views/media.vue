@@ -2,15 +2,15 @@
     <infoheader :response="response"/>
     <div class="tabcontainer">
         <div class="tabbar">
-            <router-link :to="{name:'Info',props:{id:this.$route.params.id}}">
+            <router-link :to="{name:'Info'}">
                 <div class="tab-item">INFO</div>
             </router-link>
-            <router-link :to="{name:'Watch',props:{id:this.$route.params.id}}">
+            <router-link :to="{name:'Watch'}">
                 <div class="tab-item">WATCH</div>
             </router-link>
         </div>
     </div>
-    <router-view name="tab" v-slot="{ Component }">
+    <router-view name="tab" :id="this.$route.params.id" :infoprop="response" v-slot="{ Component }">
         <keep-alive>
             <component :is="Component" />
         </keep-alive>
