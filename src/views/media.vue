@@ -1,14 +1,12 @@
 <template>
     <infoheader :response="response"/>
-    <div class="tabcontainer">
-        <div class="tabbar">
-            <router-link :to="{name:'Info'}">
-                <div class="tab-item">INFO</div>
-            </router-link>
-            <router-link :to="{name:'Watch'}">
-                <div class="tab-item">WATCH</div>
-            </router-link>
-        </div>
+    <div class="tabbar">
+        <router-link :to="{name:'Info'}">
+            <div class="tab-item">INFO</div>
+        </router-link>
+        <router-link :to="{name:'Watch'}">
+            <div class="tab-item">WATCH</div>
+        </router-link>
     </div>
     <router-view name="tab" :id="this.$route.params.id" :details="response" v-slot="{ Component }">
         <keep-alive>
@@ -37,11 +35,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.tabcontainer{
-    padding: 10px 30px;
-    display: flex;
-    justify-content: center;
-}
 .tabbar{
     display: flex;
     text-align: center;
@@ -50,16 +43,7 @@ export default {
     flex:1;
     max-width: 1400px;
     position: relative;
-    background: #fff;
-    &::after {
-        content: "";
-        position: absolute;
-        bottom: 0px;
-        z-index: -1;
-        transform: scale(0.97);
-        box-shadow: 0px 0px 16px 2px #000;
-        width: 100%;
-    }
+    box-shadow: 0px 8px 15px 0 #606060c9;
     &>*{
         flex:1;
         padding:10px 0;
