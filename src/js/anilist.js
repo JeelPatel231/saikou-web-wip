@@ -126,6 +126,7 @@ export const AnilistQueries = new (class {
       episodes
       status
       title {
+        english
         romaji
         userPreferred
       }
