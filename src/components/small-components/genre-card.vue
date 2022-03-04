@@ -18,19 +18,20 @@ export default {
 
 <style lang="scss">
 .genre {
-  width: 140px;
+  min-width: 150px;
   background: #009fff;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  font-size: 20px;
+  font-size: 1rem;
   font-weight: bold;
   position: relative;
   margin: 4px;
   overflow: hidden;
-  padding: 12px 0;
+  padding: 8px 0;
+  max-width: min-content;
 
   img {
     object-fit: cover;
