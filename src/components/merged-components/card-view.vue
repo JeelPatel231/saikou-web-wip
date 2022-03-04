@@ -2,11 +2,13 @@
   <div v-bind:class="viewmode">
     <template v-if="cardsize == 'small'">
       <!-- 2 VIEW MODES, 'slide-view' AND 'grid-view' -->
-        <cardSmall v-for="item in response" :key="item" :carddata="item.media ? item.media : item" />
+        <cardSmall v-for="item in response" :key="item" :carddata="item.media ? item.media : item.node ? item.node : item" />
+                                                        <!-- ^ this is digusting and i cant figure out a way to pass it ^ -->
     </template>
     <template v-if="cardsize == 'big'">
       <!-- 2 VIEW MODES, 'LIST' AND 'CAROUSEL' -->
-        <cardBig v-for="item in response" :key="item" :carddata="item.media ? item.media : item" />
+        <cardBig v-for="item in response" :key="item" :carddata="item.media ? item.media : item.node ? item.node : item"  />
+                                                       <!-- ^ this is digusting and i cant figure out a way to pass it ^ -->
     </template>
   </div>
 </template>
@@ -33,14 +35,15 @@ export default {
     };
   },
   mounted() {
+    // console.log("mounted ............")
+    this.updateResponse()
     if (this.viewmode == "slide-view") {
       addSlider(".slide-view"); // add mouse drag slider if slideview is rendered
     }
   },
   updated() {
-    if (this.carddatalist != undefined) {
-      this.response = this.carddatalist; // if cardlist is defined, move array to response
-    }
+    // console.log("updated ............")
+    this.updateResponse()
   },
   methods:{
     apicall(){
@@ -51,7 +54,12 @@ export default {
           console.log(this.response);
         }); // execute query
       } // if statement
-    } // api call()
+    }, // api call()
+    updateResponse(){
+      if (this.carddatalist != undefined) {
+        this.response = this.carddatalist; // if cardlist is defined, move array to response
+      }
+    }
   },
   created() {
     this.apicall()
