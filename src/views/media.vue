@@ -1,4 +1,5 @@
 <template>
+<div v-if="Object.keys(response).length">
     <infoheader :response="response"/>
     <div style="background-color: #eee;">
         <div class="tabbar">
@@ -15,6 +16,7 @@
             </keep-alive>
         </router-view>
     </div>
+</div>
 </template>
 
 <script>
