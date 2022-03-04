@@ -116,7 +116,7 @@ $media-critical-point:600px;
 img.bannerImage{
     height: 280px;
     object-fit: cover;
-    width: 100vw;
+    width: 100%;
     top: 0;
     z-index: -1;
     position: absolute;
