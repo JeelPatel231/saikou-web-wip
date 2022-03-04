@@ -124,6 +124,7 @@ export const AnilistQueries = new (class {
       }
       meanScore
       episodes
+      chapters
       status
       title {
         english
