@@ -36,6 +36,7 @@ export default {
 
 <style scoped lang="scss">
 .tabbar{
+    margin: 0 auto;
     display: flex;
     text-align: center;
     align-items: center;
