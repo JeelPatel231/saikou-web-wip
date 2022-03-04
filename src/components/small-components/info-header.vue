@@ -1,17 +1,15 @@
 <template>
     <img class="bannerImage" :src="response.bannerImage ? response.bannerImage : response.coverImage.large">
-    <div class="container">
-        <div class="grid">
-            <img class="coverImage" :src="response.coverImage.large" >
-            <div class="info color-setter">
-                <div class="status">{{response.status}}</div>
-                <div class="title">{{response.title.userPreferred}}</div>
-            </div>
-            <div class="anilist-btn color-setter">
-                ADD TO LIST
-            </div>
-            <div class="description" v-on:click="collapsed = !collapsed" v-bind:class="{collapsed : collapsed}" v-html="response.description"></div>
+    <div class="grid">
+        <img class="coverImage" :src="response.coverImage.large" >
+        <div class="info color-setter">
+            <div class="status">{{response.status}}</div>
+            <div class="title">{{response.title.userPreferred}}</div>
         </div>
+        <div class="anilist-btn color-setter">
+            ADD TO LIST
+        </div>
+        <div class="description" v-on:click="collapsed = !collapsed" v-bind:class="{collapsed : collapsed}" v-html="response.description"></div>
     </div>
 </template>
 
@@ -35,11 +33,6 @@ $media-critical-point:600px;
     @media screen and (min-width:$media-critical-point) {
         color: black;
     }
-}
-
-.container{
-    display: flex;
-    justify-content: center;
 }
 
 .status{
@@ -70,6 +63,7 @@ $media-critical-point:600px;
         'cover info'
         'cover desc'
         'button desc';
+        margin: 0 auto;
         margin-top: 160px;
     }
 }
