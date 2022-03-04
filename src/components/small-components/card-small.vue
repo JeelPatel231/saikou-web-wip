@@ -60,7 +60,7 @@ export default {
     const lazyOptions = reactive({
       lifecycle: {
         loaded: (el) => {
-          el.parentNode.querySelector("span").remove(); // find a better way to remove skeleton class
+          el.parentElement.querySelectorAll("span.skeleton").forEach(x=>x.remove());
         },
       },
     });
