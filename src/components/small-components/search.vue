@@ -25,7 +25,7 @@
           <div v-for="sort in Object.keys(sorts)" :key="sort" class="item" v-on:click="sortfilter=sort"> {{sort}} </div>
         </div>
       </div>
-      <span v-on:click="search()" class="button material-icons">search</span>
+      <span v-on:click="search()" class="button material-icons-round">search</span>
     </div>
     <div class="filter-view">
       <span v-on:click="delete genrefilters[filter]" v-for="filter in Object.keys(genrefilters)" :key="filter">{{filter}}</span>
@@ -33,10 +33,10 @@
     <div class="searchresults">
       Search Results
       <div class="toggleviewbtns">
-        <span v-on:click="cardsize = 'big'" class="material-icons">
+        <span v-on:click="cardsize = 'big'" class="material-icons-round">
           view_list
         </span>
-        <span v-on:click="cardsize = 'small'" class="material-icons">
+        <span v-on:click="cardsize = 'small'" class="material-icons-round">
           grid_view
         </span>
       </div>
@@ -104,7 +104,7 @@ export default {
   .toggleviewbtns{
     margin-left: auto;
     margin-right: 10px;
-    span.material-icons {
+    span.material-icons-round {
       color: white;
       background-color: #08f;
       border-radius: 40px;

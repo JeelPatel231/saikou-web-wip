@@ -2,13 +2,13 @@
   <div id="bottombar" class="bottombar unselectable">
     <div class="pill">
       <router-link class="icon" :to="{ name: 'Anime' }">
-        <span class="material-icons">movie_filter</span>
+        <span class="material-icons-round">movie_filter</span>
       </router-link>
       <router-link class="icon" :to="{ name: 'Home' }">
-        <span class="material-icons">home</span>
+        <span class="material-icons-round">home</span>
       </router-link>
       <router-link class="icon" :to="{ name: 'Manga' }">
-        <span class="material-icons">import_contacts</span>
+        <span class="material-icons-round">import_contacts</span>
       </router-link>
     </div>
   </div>

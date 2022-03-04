@@ -13,7 +13,7 @@
       />
       <div v-if="carddata.meanScore" class="score">
         {{ carddata.meanScore }}
-        <span class="material-icons">star</span>
+        <span class="material-icons-round">star</span>
       </div>
     </div>
     <div class="info" v-if="carddata.title && infoVisible">
