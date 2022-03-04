@@ -57,7 +57,7 @@ $media-critical-point:600px;
     max-width: 1420px;
     padding: 10px 30px;
     @media screen and (min-width:$media-critical-point) {
-        grid-template-rows: 100px 80px 145px auto;
+        grid-template-rows: 110px 80px 135px auto;
         grid-template-areas: 
         'cover none'
         'cover info'
@@ -82,7 +82,7 @@ $media-critical-point:600px;
 }
 
 .anilist-btn{
-    height: 40px;
+    height: 48px;
     border: 2px #08f solid;
     box-sizing: border-box;
     border-radius: 16px;
@@ -108,7 +108,7 @@ $media-critical-point:600px;
     }
 }
 img.bannerImage{
-    height: 280px;
+    height: 290px;
     object-fit: cover;
     width: 100%;
     top: 0;
@@ -118,7 +118,7 @@ img.bannerImage{
 }
 img.coverImage{
     border-radius: 20px;
-    box-shadow: 0px 0px 20px 0;
+    box-shadow: 0px 0px 32px 0 #606060c9;
     height: 200px;
     grid-area: cover;
     @media screen and (min-width:$media-critical-point) {
