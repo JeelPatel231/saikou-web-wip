@@ -2,13 +2,11 @@
   <div v-bind:class="viewmode" ref="view">
     <template v-if="cardsize == 'small'">
       <!-- 2 VIEW MODES, 'slide-view' AND 'grid-view' -->
-        <cardSmall v-for="item in response" :key="item" :carddata="item.media ? item.media : item.node ? item.node : item" />
-                                                        <!-- ^ this is digusting and i cant figure out a way to pass it ^ -->
+        <cardSmall v-for="item in response" :key="item" :carddata="eval(item,nestedPath)" />
     </template>
     <template v-if="cardsize == 'big'">
       <!-- 2 VIEW MODES, 'LIST' AND 'CAROUSEL' -->
-        <cardBig v-for="item in response" :key="item" :carddata="item.media ? item.media : item.node ? item.node : item"  />
-                                                       <!-- ^ this is digusting and i cant figure out a way to pass it ^ -->
+        <cardBig v-for="item in response" :key="item" :carddata="eval(item,nestedPath)" />
     </template>
   </div>
 </template>
@@ -27,7 +25,7 @@ export default {
     cardSmall,
     cardBig,
   },
-  props: ["carddatalist", "viewmode", "query", "variables", "cardsize", "arrayPath","pagination"],
+  props: ["carddatalist", "viewmode", "query", "variables", "cardsize", "arrayPath","pagination","nestedPath"],
   data() {
     return {
       response: [], // assign response as variable , but this makes the component update 2x
@@ -46,6 +44,10 @@ export default {
     this.updateResponse()
   },
   methods:{
+    eval(item,arg){
+      if(arg == "" || arg == undefined ){return item}
+      return eval(item[arg])
+    },
     apicall(){
       if (this.query != undefined) {
         executeQuery(this.query, Object.assign({},this.variables,{page:this.page})).then((x) => {
