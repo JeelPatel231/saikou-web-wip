@@ -1,5 +1,4 @@
-export default function addSlider(el) {
-  const slider = document.querySelector(el);
+export default function addSlider(slider) {
   let isDown = false;
   let startX;
   let scrollLeft;

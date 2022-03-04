@@ -1,5 +1,5 @@
 <template>
-  <div v-bind:class="viewmode">
+  <div v-bind:class="viewmode" ref="view">
     <template v-if="cardsize == 'small'">
       <!-- 2 VIEW MODES, 'slide-view' AND 'grid-view' -->
         <cardSmall v-for="item in response" :key="item" :carddata="item.media ? item.media : item.node ? item.node : item" />
@@ -38,7 +38,7 @@ export default {
     // console.log("mounted ............")
     this.updateResponse()
     if (this.viewmode == "slide-view") {
-      addSlider(".slide-view"); // add mouse drag slider if slideview is rendered
+      addSlider(this.$refs.view); // add mouse drag slider if slideview is rendered
     }
   },
   updated() {
