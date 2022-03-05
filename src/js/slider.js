@@ -3,9 +3,9 @@ export default function addSlider(element) {
 
   element.addEventListener('wheel', (event) => {
     event.preventDefault();
-
+    let sensitivity = 60
     element.scrollBy({
-      left: event.deltaY < 0 ? -30 : 30,
+      left: event.deltaY < 0 ? -sensitivity : sensitivity,
       
     });
   });
