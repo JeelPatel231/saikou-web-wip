@@ -41,7 +41,7 @@ $media-critical-point:600px;
 .title{
     font-size: 1.3rem;
     @media screen and (min-width:$media-critical-point) {
-        font-size: 2rem;
+        font-size: 1.8rem;
     }
 }
 
