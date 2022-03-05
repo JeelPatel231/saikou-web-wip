@@ -93,7 +93,9 @@ export default {
 .slide-view {
   display: flex;
   overflow: auto;
-  width: 100%;
+  width: min-content;
+  max-width: 100%;
+  scrollbar-width: none;
 
   &::-webkit-scrollbar {
     display: none;
