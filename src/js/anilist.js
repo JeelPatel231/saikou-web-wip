@@ -14,6 +14,36 @@ export function executeQuery(query, variables) {
   return fetch("https://graphql.anilist.co", options).then((x) => x.json());
 }
 
+export function genreImageCollection(){
+  let query = `
+  query ($genre: String){
+      Page(page:1,perPage:5){
+          media(genre:$genre,sort:POPULARITY_DESC) {
+              coverImage{
+                  large
+              }
+          }
+      }
+  }`
+
+  executeQuery(AnilistQueries.genreCollection).then((x)=>{
+      x.data.GenreCollection.forEach((genre)=>{
+          console.log("getting genre : "+genre)
+          executeQuery(query,{genre:genre}).then((response)=>{
+              let index = 0;
+              let imageArray = response.data.Page.media
+              while(Object.values(genreImageMap).includes(imageArray[index].coverImage.large)){
+                  index++
+              }
+              genreImageMap[genre]=imageArray[index].coverImage.large
+          });
+      });
+  });
+  console.log(genreImageMap)
+}
+
+export let genreImageMap = {}
+
 export const AnilistQueries = new (class {
   searchQuery = `
     query ($page: Int = 1, $perPage : Int, $id: Int, $type: MediaType, $isAdult: Boolean = false, $search: String, $format: [MediaFormat], $status: MediaStatus, $countryOfOrigin: CountryCode, $source: MediaSource, $season: MediaSeason, $seasonYear: Int, $year: String, $onList: Boolean, $yearLesser: FuzzyDateInt, $yearGreater: FuzzyDateInt, $episodeLesser: Int, $episodeGreater: Int, $durationLesser: Int, $durationGreater: Int, $chapterLesser: Int, $chapterGreater: Int, $volumeLesser: Int, $volumeGreater: Int, $licensedBy: [String], $isLicensed: Boolean, $genres: [String], $excludedGenres: [String], $tags: [String], $excludedTags: [String], $minimumTagRank: Int, $sort: [MediaSort] = [POPULARITY_DESC, SCORE_DESC]) {

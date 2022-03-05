@@ -8,8 +8,12 @@
 </template>
 
 <script>
+import { genreImageCollection } from "@/js/anilist.js";
 export default {
   name: "App",
+  created(){
+    genreImageCollection()
+  }
 };
 </script>
 

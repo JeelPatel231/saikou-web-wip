@@ -10,9 +10,19 @@
 </template>
 
 <script>
+import { genreImageMap } from "@/js/anilist";
+
 export default {
   name: "genreCard",
-  props: ["genre", "span", "imgsrc"],
+  data(){
+    return{
+      imgsrc: genreImageMap[this.genre],
+    }
+  },
+  mounted(){
+    console.log(this.genre)
+  },
+  props: ["genre", "span"],
 };
 </script>
 
