@@ -1,5 +1,5 @@
 <template>
-  <div class="card unselectable">
+<router-link class="card unselectable" :to="{name:'Info',params:{id:carddata.id}}">
     <div class="animecard-span">
       <span class="skeleton">
         <span class="skeleton-wiper" />
@@ -40,7 +40,7 @@
       </div>
     </div>
     <span class="clear-overlay" />
-  </div>
+</router-link>
 </template>
 
 <script>
