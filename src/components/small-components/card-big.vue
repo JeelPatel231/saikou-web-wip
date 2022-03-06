@@ -82,7 +82,7 @@ export default {
   padding: 10px;
   color: #fff;
   position: relative;
-  .name{
+  .name {
     font-weight: 700;
   }
   & > * {

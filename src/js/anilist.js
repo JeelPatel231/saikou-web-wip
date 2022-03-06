@@ -14,7 +14,7 @@ export function executeQuery(query, variables) {
   return fetch("https://graphql.anilist.co", options).then((x) => x.json());
 }
 
-export function genreImageCollection(){
+export function genreImageCollection() {
   let query = `
   query ($genre: String){
       Page(page:1,perPage:5){
@@ -24,25 +24,29 @@ export function genreImageCollection(){
               }
           }
       }
-  }`
+  }`;
 
-  executeQuery(AnilistQueries.genreCollection).then((x)=>{
-      x.data.GenreCollection.forEach((genre)=>{
-          console.log("getting genre : "+genre)
-          executeQuery(query,{genre:genre}).then((response)=>{
-              let index = 0;
-              let imageArray = response.data.Page.media
-              while(Object.values(genreImageMap).includes(imageArray[index].coverImage.large)){
-                  index++
-              }
-              genreImageMap[genre]=imageArray[index].coverImage.large
-          });
+  executeQuery(AnilistQueries.genreCollection).then((x) => {
+    x.data.GenreCollection.forEach((genre) => {
+      console.log("getting genre : " + genre);
+      executeQuery(query, { genre: genre }).then((response) => {
+        let index = 0;
+        let imageArray = response.data.Page.media;
+        while (
+          Object.values(genreImageMap).includes(
+            imageArray[index].coverImage.large
+          )
+        ) {
+          index++;
+        }
+        genreImageMap[genre] = imageArray[index].coverImage.large;
       });
+    });
   });
-  console.log(genreImageMap)
+  console.log(genreImageMap);
 }
 
-export let genreImageMap = {}
+export let genreImageMap = {};
 
 export const AnilistQueries = new (class {
   searchQuery = `
@@ -279,5 +283,5 @@ export const AnilistQueries = new (class {
         site
       }
     }
-  }`
+  }`;
 })();

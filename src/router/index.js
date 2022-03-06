@@ -32,22 +32,22 @@ const routes = [
     path: "/media/",
     name: "Media",
     component: Media,
-    children : [
+    children: [
       {
-        path:"info/:id(\\d+)",
-        name:"Info",
-        components:{
-          tab:infotab,
-        } 
+        path: "info/:id(\\d+)",
+        name: "Info",
+        components: {
+          tab: infotab,
+        },
       },
       {
-        path:"watch/:id(\\d+)",
-        name:"Watch",
-        components:{
-          tab:watchtab,
-        }
-      }
-    ]
+        path: "watch/:id(\\d+)",
+        name: "Watch",
+        components: {
+          tab: watchtab,
+        },
+      },
+    ],
   },
   // {
   //   path: "/manga",

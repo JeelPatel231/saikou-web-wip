@@ -1,5 +1,8 @@
 <template>
-<router-link class="card unselectable" :to="{name:'Info',params:{id:carddata.id}}">
+  <router-link
+    class="card unselectable"
+    :to="{ name: 'Info', params: { id: carddata.id } }"
+  >
     <div class="animecard-span">
       <span class="skeleton">
         <span class="skeleton-wiper" />
@@ -12,15 +15,15 @@
         class="coverimage"
       />
       <div v-if="carddata.meanScore" class="score">
-        {{ carddata.meanScore/10 }}
+        {{ carddata.meanScore / 10 }}
         <span class="material-icons-round">star</span>
       </div>
     </div>
     <div class="info" v-if="carddata.title && infoVisible">
       <!-- show relation if passed as prop -->
       <div v-if="relation" class="relation">
-        {{carddata.type}}
-        {{relation}}
+        {{ carddata.type }}
+        {{ relation }}
       </div>
 
       <div class="anime-name">
@@ -40,7 +43,7 @@
       </div>
     </div>
     <span class="clear-overlay" />
-</router-link>
+  </router-link>
 </template>
 
 <script>
@@ -49,7 +52,7 @@ import { reactive } from "vue";
 export default {
   name: "cardSmall",
   props: {
-    relation:{},
+    relation: {},
     carddata: {},
     infoVisible: {
       default: true,
@@ -60,7 +63,9 @@ export default {
     const lazyOptions = reactive({
       lifecycle: {
         loaded: (el) => {
-          el.parentElement.querySelectorAll("span.skeleton").forEach(x=>x.remove());
+          el.parentElement
+            .querySelectorAll("span.skeleton")
+            .forEach((x) => x.remove());
         },
       },
     });
@@ -120,8 +125,8 @@ span[lazy="loaded"] {
   font-weight: bold;
   border-radius: 24px 0 0 0;
   align-items: center;
-  span.material-icons-round{
-    margin-bottom:0.125rem
+  span.material-icons-round {
+    margin-bottom: 0.125rem;
   }
 }
 

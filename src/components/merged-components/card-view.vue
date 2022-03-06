@@ -1,22 +1,45 @@
 <template>
-<div class="view-parent">
-  <div v-if="viewmode == 'slide-view'" ref="slideleft" v-on:click="scroll(-1)" class="slide-buttons unselectable material-icons-round">navigate_before</div>
-  <div v-bind:class="viewmode" ref="view">
-    <template v-if="cardsize == 'small'">
-      <!-- 2 VIEW MODES, 'slide-view' AND 'grid-view' -->
-        <cardSmall v-for="item in response" :key="item" :relation="item.relationType" :carddata="eval(item,nestedPath)" />
-    </template>
-    <template v-if="cardsize == 'big'">
-      <!-- 2 VIEW MODES, 'LIST' AND 'CAROUSEL' -->
-        <cardBig v-for="item in response" :key="item" :carddata="eval(item,nestedPath)" />
-    </template>
-    <template v-if="cardsize == 'character'">
-      <!-- 2 VIEW MODES, 'LIST' AND 'CAROUSEL' -->
+  <div class="view-parent">
+    <div
+      v-if="viewmode == 'slide-view'"
+      ref="slideleft"
+      v-on:click="scroll(-1)"
+      class="slide-buttons unselectable material-icons-round"
+    >
+      navigate_before
+    </div>
+    <div v-bind:class="viewmode" ref="view">
+      <template v-if="cardsize == 'small'">
+        <!-- 2 VIEW MODES, 'slide-view' AND 'grid-view' -->
+        <cardSmall
+          v-for="item in response"
+          :key="item"
+          :relation="item.relationType"
+          :carddata="eval(item, nestedPath)"
+        />
+      </template>
+      <template v-if="cardsize == 'big'">
+        <!-- 2 VIEW MODES, 'LIST' AND 'CAROUSEL' -->
+        <cardBig
+          v-for="item in response"
+          :key="item"
+          :carddata="eval(item, nestedPath)"
+        />
+      </template>
+      <template v-if="cardsize == 'character'">
+        <!-- 2 VIEW MODES, 'LIST' AND 'CAROUSEL' -->
         <CharacterCard v-for="item in response" :key="item" :carddata="item" />
-    </template>
+      </template>
+    </div>
+    <div
+      v-if="viewmode == 'slide-view'"
+      ref="slideright"
+      v-on:click="scroll(1)"
+      class="slide-buttons end unselectable material-icons-round"
+    >
+      navigate_next
+    </div>
   </div>
-  <div v-if="viewmode == 'slide-view'" ref="slideright" v-on:click="scroll(1)" class="slide-buttons end unselectable material-icons-round">navigate_next</div>
-</div>
 </template>
 
 <script>
@@ -32,61 +55,77 @@ export default {
   components: {
     cardSmall,
     cardBig,
-    CharacterCard
-},
-  props: ["carddatalist", "viewmode", "query", "variables", "cardsize", "arrayPath","pagination","nestedPath","relation"],
+    CharacterCard,
+  },
+  props: [
+    "carddatalist",
+    "viewmode",
+    "query",
+    "variables",
+    "cardsize",
+    "arrayPath",
+    "pagination",
+    "nestedPath",
+    "relation",
+  ],
   data() {
     return {
       response: [], // assign response as variable , but this makes the component update 2x
-      page:1, // anilist page starts a @ 1 rather 0
+      page: 1, // anilist page starts a @ 1 rather 0
     };
   },
   mounted() {
     // console.log("mounted ............")
-    this.updateResponse()
+    this.updateResponse();
   },
   updated() {
     // console.log("updated ............")
-    this.updateResponse()
-    this.showSlideButtons()
+    this.updateResponse();
+    this.showSlideButtons();
   },
-  methods:{
-    eval(item,arg){
-      if(arg == "" || arg == undefined ){return item}
-      return eval(item[arg])
+  methods: {
+    eval(item, arg) {
+      if (arg == "" || arg == undefined) {
+        return item;
+      }
+      return eval(item[arg]);
     },
-    apicall(){
+    apicall() {
       if (this.query != undefined) {
-        executeQuery(this.query, Object.assign({},this.variables,{page:this.page})).then((x) => {
+        executeQuery(
+          this.query,
+          Object.assign({}, this.variables, { page: this.page })
+        ).then((x) => {
           x; // placebo for error
           this.response = this.response.concat(eval(`x.${this.arrayPath}`)); // if query is defined, make a call and move array to response
           console.log(this.response);
         }); // execute query
       } // if statement
     }, // api call()
-    updateResponse(){
+    updateResponse() {
       if (this.carddatalist != undefined) {
         this.response = this.carddatalist; // if cardlist is defined, move array to response
       }
     },
-    scroll(side){
-      let el = this.$refs.view
-      el.scrollLeft += side*(el.offsetWidth)*0.8
+    scroll(side) {
+      let el = this.$refs.view;
+      el.scrollLeft += side * el.offsetWidth * 0.8;
     },
-    showSlideButtons(){
+    showSlideButtons() {
       // remove slide buttons if scroll is not needed
-      if(this.viewmode == "slide-view"){
-        let el = this.$refs.view
-        if(el.scrollWidth - el.clientWidth == 0){
-          this.$refs.slideleft.remove()
-          this.$refs.slideright.remove()
+      if (this.viewmode == "slide-view") {
+        let el = this.$refs.view;
+        if (el.scrollWidth - el.clientWidth == 0) {
+          this.$refs.slideleft.remove();
+          this.$refs.slideright.remove();
         }
       }
-    }
+    },
   },
   created() {
-    this.apicall()
-    if (this.pagination == true){ // add listener only if said
+    this.apicall();
+    if (this.pagination == true) {
+      // add listener only if said
       // console.log("assigned onscroll event")
       window.onscroll = () => {
         let bottomOfWindow =
@@ -94,7 +133,7 @@ export default {
           document.documentElement.offsetHeight;
         if (bottomOfWindow) {
           // console.log("bottom");
-          this.page++
+          this.page++;
           console.log(this.page);
           this.apicall();
         }
@@ -105,15 +144,14 @@ export default {
 </script>
 
 <style lang="scss">
-.view-parent{
+.view-parent {
   position: relative;
-    
-  &:hover > .slide-buttons{
+
+  &:hover > .slide-buttons {
     opacity: 0.8;
   }
-
 }
-.slide-buttons{
+.slide-buttons {
   position: absolute;
   z-index: 1;
   background: #fff;
@@ -125,16 +163,16 @@ export default {
   margin: 5.5rem 10px 10px 10px;
   cursor: pointer;
   box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.1);
-  box-shadow:2px 2px 2px 0 rgba(0,0,0,.1);
-  &.end{
+  box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.1);
+  &.end {
     right: 0;
   }
-  &:hover{
+  &:hover {
     opacity: 1 !important;
     transition: 0ms;
   }
-  &:active{
-    background:#aeaeae;
+  &:active {
+    background: #aeaeae;
   }
 }
 
@@ -153,10 +191,10 @@ export default {
 
   .card {
     margin: 10px;
-    &:first-child{
+    &:first-child {
       margin-left: 24px;
     }
-    &:last-child{
+    &:last-child {
       margin-right: 24px;
     }
   }

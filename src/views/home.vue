@@ -9,7 +9,7 @@ import bottombar from "../components/bottombar.vue";
 export default {
   name: "Home",
   components: {
-    bottombar
+    bottombar,
   },
 };
 </script>

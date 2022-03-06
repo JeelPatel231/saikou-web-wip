@@ -1,5 +1,8 @@
 <template>
-  <div class="searchwrapper" v-on:click.self="this.$router.push({name: 'Search'})">
+  <div
+    class="searchwrapper"
+    v-on:click.self="this.$router.push({ name: 'Search' })"
+  >
     <div class="search">
       <div class="searchgroup">
         <input
@@ -16,19 +19,40 @@
         <div class="head">GENRES</div>
         <div class="item-list">
           <!-- Using dictionary for fast deletion and prevent repetation of genres -->
-          <div v-for="genre in genres" :key="genre" class="item" v-on:click="genrefilters[genre]=0"> {{genre}} </div>
+          <div
+            v-for="genre in genres"
+            :key="genre"
+            class="item"
+            v-on:click="genrefilters[genre] = 0"
+          >
+            {{ genre }}
+          </div>
         </div>
       </div>
       <div class="filter">
         <div class="head">{{ sortfilter }}</div>
         <div class="item-list">
-          <div v-for="sort in Object.keys(sorts)" :key="sort" class="item" v-on:click="sortfilter=sort"> {{sort}} </div>
+          <div
+            v-for="sort in Object.keys(sorts)"
+            :key="sort"
+            class="item"
+            v-on:click="sortfilter = sort"
+          >
+            {{ sort }}
+          </div>
         </div>
       </div>
-      <span v-on:click="search()" class="button material-icons-round">search</span>
+      <span v-on:click="search()" class="button material-icons-round"
+        >search</span
+      >
     </div>
     <div class="filter-view">
-      <span v-on:click="delete genrefilters[filter]" v-for="filter in Object.keys(genrefilters)" :key="filter">{{filter}}</span>
+      <span
+        v-on:click="delete genrefilters[filter]"
+        v-for="filter in Object.keys(genrefilters)"
+        :key="filter"
+        >{{ filter }}</span
+      >
     </div>
     <div class="searchresults">
       Search Results
@@ -61,18 +85,18 @@ export default {
   data() {
     return {
       response: [],
-      genres:[], // list of all genres
-      sorts:{
-        "SCORE" : "SCORE_DESC",
-        "POPULARITY" : "POPULARITY_DESC",
-        "TRENDING" : "TRENDING_DESC",
+      genres: [], // list of all genres
+      sorts: {
+        SCORE: "SCORE_DESC",
+        POPULARITY: "POPULARITY_DESC",
+        TRENDING: "TRENDING_DESC",
         "A-Z": "TITLE_ENGLISH",
         "Z-A": "TITLE_ENGLISH_DESC",
-        "TRASH": "SCORE"
+        TRASH: "SCORE",
       }, // list of all sorts
-      genrefilters:{},
-      cardsize:"big",
-      sortfilter:"POPULARITY", // string for now since only 1 sort filter is allowed
+      genrefilters: {},
+      cardsize: "big",
+      sortfilter: "POPULARITY", // string for now since only 1 sort filter is allowed
     };
   },
   props: ["fragment"],
@@ -80,9 +104,13 @@ export default {
     search() {
       let variables = {
         type: this.$refs.searchText.attributes.fragment.value, // MANGA || ANIME
-        genres:Object.keys(this.genrefilters).length ? Object.keys(this.genrefilters) : null, // list of all genres selected
-        search: this.$refs.searchText.value ? this.$refs.searchText.value : null, // because "" doesnt match anything, null makes an empty query
-        sort:[this.sorts[this.sortfilter]] // pass sort filter as array
+        genres: Object.keys(this.genrefilters).length
+          ? Object.keys(this.genrefilters)
+          : null, // list of all genres selected
+        search: this.$refs.searchText.value
+          ? this.$refs.searchText.value
+          : null, // because "" doesnt match anything, null makes an empty query
+        sort: [this.sorts[this.sortfilter]], // pass sort filter as array
       };
       executeQuery(AnilistQueries.searchQuery, variables).then((x) => {
         this.response = x.data.Page.media;
@@ -90,18 +118,20 @@ export default {
       });
     },
   },
-  created(){
-    executeQuery(AnilistQueries.genreCollection).then((x)=>{this.genres = x.data.GenreCollection}) // start genre collection 
-  }
+  created() {
+    executeQuery(AnilistQueries.genreCollection).then((x) => {
+      this.genres = x.data.GenreCollection;
+    }); // start genre collection
+  },
 };
 </script>
 
 <style lang="scss">
-.searchresults{
+.searchresults {
   display: flex;
   font-size: 1.6rem;
   align-items: center;
-  .toggleviewbtns{
+  .toggleviewbtns {
     margin-left: auto;
     margin-right: 10px;
     span.material-icons-round {
@@ -113,19 +143,19 @@ export default {
   }
 }
 
-.filter-view{
+.filter-view {
   padding: 10px;
   display: flex;
   cursor: pointer;
   flex-wrap: wrap;
-  span{
+  span {
     background-color: #08f;
     padding: 4px 8px;
     border-radius: 20px;
     color: #fff;
     margin: 0 10px 10px 0;
-    &:hover::after{
-      content: '✕';
+    &:hover::after {
+      content: "✕";
       position: relative;
       padding: 0 4px;
       background: #3560d7;
@@ -135,11 +165,11 @@ export default {
   }
 }
 
-.filter{
+.filter {
   position: relative;
   font-size: 1rem;
   margin-left: 10px;
-  .head{
+  .head {
     height: 100%;
     display: flex;
     align-items: center;
@@ -152,18 +182,18 @@ export default {
     width: 8rem;
     justify-content: center;
   }
-  .item{
+  .item {
     height: 30px;
     min-width: max-content;
     line-height: 30px;
     padding: 0 10px;
-    &:hover{
+    &:hover {
       background: #ddd;
     }
   }
-  .item-list{
+  .item-list {
     display: none;
-    min-width:8rem;
+    min-width: 8rem;
     border-radius: 20px;
     border: 2px solid #08f;
     box-sizing: border-box;
@@ -172,7 +202,7 @@ export default {
     position: absolute;
     overflow: hidden;
   }
-  &:hover > .item-list{
+  &:hover > .item-list {
     display: block;
   }
 }

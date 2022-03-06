@@ -14,7 +14,7 @@
     </div>
     <div class="info">
       <div class="name">
-          {{ carddata.node.name.userPreferred }}
+        {{ carddata.node.name.userPreferred }}
       </div>
       <div class="role">
         {{ carddata.role }}
@@ -36,7 +36,9 @@ export default {
     const lazyOptions = reactive({
       lifecycle: {
         loaded: (el) => {
-          el.parentElement.querySelectorAll("span.skeleton").forEach(x=>x.remove())
+          el.parentElement
+            .querySelectorAll("span.skeleton")
+            .forEach((x) => x.remove());
         },
       },
     });
@@ -48,8 +50,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.role{
-    text-align: end;
+.role {
+  text-align: end;
 }
 .coverimage {
   object-fit: cover;

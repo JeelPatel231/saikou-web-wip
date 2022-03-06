@@ -1,7 +1,6 @@
 <template>
   <searchbar fragment="MANGA" />
   <bottombar />
-
 </template>
 
 <script>
@@ -12,7 +11,7 @@ export default {
   name: "Manga",
   components: {
     searchbar,
-    bottombar
+    bottombar,
   },
 };
 </script>

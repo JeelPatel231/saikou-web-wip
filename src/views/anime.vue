@@ -12,11 +12,16 @@
   <!-- <cardview cardsize="big" :query="AnilistQueries.recentlyUpdated" arrayPath="data.Page.airingSchedules" /> -->
 
   <!-- POPULAR -->
-  <cardview cardsize="big" :query="AnilistQueries.searchQuery" :variables="{
-      countryOfOrigin:'JP',
-      type:'ANIME'
+  <cardview
+    cardsize="big"
+    :query="AnilistQueries.searchQuery"
+    :variables="{
+      countryOfOrigin: 'JP',
+      type: 'ANIME',
     }"
-    arrayPath="data.Page.media" :pagination="true" />
+    arrayPath="data.Page.media"
+    :pagination="true"
+  />
   <bottombar />
 </template>
 

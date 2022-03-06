@@ -14,10 +14,10 @@ import { genreImageMap } from "@/js/anilist";
 
 export default {
   name: "genreCard",
-  data(){
-    return{
+  data() {
+    return {
       imgsrc: genreImageMap[this.genre],
-    }
+    };
   },
   props: ["genre", "span"],
 };
