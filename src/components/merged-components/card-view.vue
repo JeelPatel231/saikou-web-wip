@@ -104,7 +104,6 @@ export default {
 
 <style lang="scss">
 .slide-buttons{
-  align-self: center;
   position: absolute;
   z-index: 1;
   background: #fff;
@@ -112,8 +111,9 @@ export default {
   transition: 200ms ease;
   font-size: 3rem;
   border-radius: 100%;
-  margin: 10px;
+  margin: 5.5rem 10px 10px 10px;
   cursor: pointer;
+  box-shadow: 2px 2px 2px 0 rgba(0, 0, 0, 0.1);
   box-shadow:2px 2px 2px 0 rgba(0,0,0,.1);
   &.end{
     right: 0;
