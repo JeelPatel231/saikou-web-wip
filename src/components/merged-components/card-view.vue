@@ -1,6 +1,7 @@
 <template>
+<div class="view-parent">
+  <div v-if="viewmode == 'slide-view'" ref="slideleft" v-on:click="scroll(-1)" class="slide-buttons unselectable material-icons-round">navigate_before</div>
   <div v-bind:class="viewmode" ref="view">
-    <div v-if="viewmode == 'slide-view'" ref="slideleft" v-on:click="scroll(-1)" class="slide-buttons unselectable material-icons-round">navigate_before</div>
     <template v-if="cardsize == 'small'">
       <!-- 2 VIEW MODES, 'slide-view' AND 'grid-view' -->
         <cardSmall v-for="item in response" :key="item" :relation="item.relationType" :carddata="eval(item,nestedPath)" />
@@ -13,8 +14,9 @@
       <!-- 2 VIEW MODES, 'LIST' AND 'CAROUSEL' -->
         <CharacterCard v-for="item in response" :key="item" :carddata="item" />
     </template>
-      <div v-if="viewmode == 'slide-view'" ref="slideright" v-on:click="scroll(1)" class="slide-buttons end unselectable material-icons-round">navigate_next</div>
   </div>
+  <div v-if="viewmode == 'slide-view'" ref="slideright" v-on:click="scroll(1)" class="slide-buttons end unselectable material-icons-round">navigate_next</div>
+</div>
 </template>
 
 <script>
@@ -103,10 +105,19 @@ export default {
 </script>
 
 <style lang="scss">
+.view-parent{
+  position: relative;
+    
+  &:hover > .slide-buttons{
+    opacity: 0.8;
+  }
+
+}
 .slide-buttons{
   position: absolute;
   z-index: 1;
   background: #fff;
+  top: 0;
   opacity: 0;
   transition: 200ms ease;
   font-size: 3rem;
@@ -134,10 +145,6 @@ export default {
   max-width: 100%;
   scrollbar-width: none;
   scroll-behavior: smooth;
-  
-  &:hover > .slide-buttons{
-    opacity: 0.8;
-  }
 
   &::-webkit-scrollbar {
     display: none;
