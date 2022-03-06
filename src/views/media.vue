@@ -49,7 +49,7 @@ export default {
     font-weight: 700;
     top: 0;
     position: sticky;
-    z-index: 1;
+    z-index: 2;
     box-shadow: 0px 4px 8px 0 #60606070;
     &>*{
         flex:1;
