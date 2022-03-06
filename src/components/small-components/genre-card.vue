@@ -19,9 +19,6 @@ export default {
       imgsrc: genreImageMap[this.genre],
     }
   },
-  mounted(){
-    console.log(this.genre)
-  },
   props: ["genre", "span"],
 };
 </script>
