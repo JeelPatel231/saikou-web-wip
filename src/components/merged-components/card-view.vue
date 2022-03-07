@@ -25,6 +25,13 @@
           :key="item"
           :carddata="eval(item, nestedPath)"
         />
+        <div
+          v-if="pagination"
+          v-on:click="apicall()"
+          class="material-icons-round expandmore"
+        >
+          expand_more
+        </div>
       </template>
       <template v-if="cardsize == 'character'">
         <!-- 2 VIEW MODES, 'LIST' AND 'CAROUSEL' -->
@@ -100,6 +107,7 @@ export default {
           this.response = this.response.concat(eval(`x.${this.arrayPath}`)); // if query is defined, make a call and move array to response
           console.log(this.response);
         }); // execute query
+        this.page++
       } // if statement
     }, // api call()
     updateResponse() {
@@ -124,21 +132,6 @@ export default {
   },
   created() {
     this.apicall();
-    if (this.pagination == true) {
-      // add listener only if said
-      // console.log("assigned onscroll event")
-      window.onscroll = () => {
-        let bottomOfWindow =
-          document.documentElement.scrollTop + window.innerHeight ===
-          document.documentElement.offsetHeight;
-        if (bottomOfWindow) {
-          // console.log("bottom");
-          this.page++;
-          console.log(this.page);
-          this.apicall();
-        }
-      }; // on scroll event
-    } // if statement
   }, // created()
 };
 </script>
@@ -205,6 +198,8 @@ export default {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  position: relative;
+  padding-bottom: 150px;
 
   &::-webkit-scrollbar {
     display: none;
@@ -214,5 +209,16 @@ export default {
   .card {
     margin: 10px;
   }
+}
+
+.expandmore{
+  font-size: 3rem;
+  background: #000;
+  color: #fff;
+  border-radius: 30px;
+  cursor: pointer;
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 100px;
 }
 </style>
