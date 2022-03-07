@@ -60,7 +60,7 @@ export default {
 }
 .animecard-span {
   height: 200px;
-  border-radius: 20px;
+  border-radius: 16px;
   overflow: hidden;
   position: relative;
   box-shadow: 0px 0px 16px 0 #6060608c;
@@ -92,16 +92,16 @@ export default {
     0% {
       top: -100px;
     }
-    50% {
-      top: 250px;
+    80% {
+      top: 270px;
     }
     100% {
-      top: 250px;
+      top: 270px;
     }
   }
 
   position: absolute;
-  background: linear-gradient(#eee0, #eee, #eee, #eee0);
+  background: linear-gradient(#eee0, #aeaeae, #aeaeae, #eee0);
   height: 20%;
   width: 200%;
   transform: rotate(-45deg);

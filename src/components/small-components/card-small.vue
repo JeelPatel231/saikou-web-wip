@@ -77,9 +77,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-span[lazy="loaded"] {
-  display: none;
-}
 .coverimage {
   object-fit: cover;
   height: 100%;
@@ -154,16 +151,16 @@ span[lazy="loaded"] {
     0% {
       top: -100px;
     }
-    50% {
-      top: 250px;
+    80% {
+      top: 270px;
     }
     100% {
-      top: 250px;
+      top: 270px;
     }
   }
 
   position: absolute;
-  background: linear-gradient(#eee0, #eee, #eee, #eee0);
+  background: linear-gradient(#eee0, #aeaeae, #aeaeae, #eee0);
   height: 20%;
   width: 200%;
   transform: rotate(-45deg);
