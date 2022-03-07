@@ -4,9 +4,7 @@
     :to="{ name: 'Info', params: { id: carddata.id } }"
   >
     <div class="animecard-span">
-      <span class="skeleton">
-        <span class="skeleton-wiper" />
-      </span>
+      <span class="skeleton" />
       <img
         v-lazy="{
           src: carddata.coverImage.large,
@@ -168,29 +166,31 @@ export default {
   position: absolute;
   width: 100%;
   height: 100%;
+
+  &::before{
+    @keyframes wipe {
+      0% {
+        top: -100px;
+      }
+      80% {
+        top: 270px;
+      }
+      100% {
+        top: 270px;
+      }
+    }
+
+    content: '';
+    position: absolute;
+    background: linear-gradient(#eee0, #aeaeae, #aeaeae, #eee0);
+    height: 20%;
+    width: 200%;
+    transform: rotate(-45deg);
+    top: -10px;
+    bottom: 0px;
+    right: -50%;
+    animation: wipe 2s ease infinite;
+    }
 }
 
-.skeleton-wiper {
-  @keyframes wipe {
-    0% {
-      top: -100px;
-    }
-    80% {
-      top: 270px;
-    }
-    100% {
-      top: 270px;
-    }
-  }
-
-  position: absolute;
-  background: linear-gradient(#eee0, #aeaeae, #aeaeae, #eee0);
-  height: 20%;
-  width: 200%;
-  transform: rotate(-45deg);
-  top: -10px;
-  bottom: 0px;
-  right: -50%;
-  animation: wipe 2s ease infinite;
-}
 </style>
