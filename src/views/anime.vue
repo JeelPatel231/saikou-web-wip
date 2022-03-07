@@ -14,6 +14,7 @@
   <!-- POPULAR -->
   <cardview
     cardsize="big"
+    viewmode="grid-view"
     :query="AnilistQueries.searchQuery"
     :variables="{
       countryOfOrigin: 'JP',
