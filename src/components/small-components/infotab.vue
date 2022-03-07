@@ -89,5 +89,8 @@ export default {
 .genre-view {
   display: flex;
   flex-wrap: wrap;
+  @media screen and (max-width: 600px) {
+    justify-content: center;
+  }
 }
 </style>
