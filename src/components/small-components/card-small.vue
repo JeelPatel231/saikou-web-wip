@@ -21,8 +21,7 @@
     </div>
     <div class="info" v-if="carddata.title && infoVisible">
       <!-- show relation if passed as prop -->
-      <div v-if="relation" class="relation">
-        {{ carddata.type }}
+      <div v-if="relation" v-bind:class="carddata.type" class="relation">
         {{ relation }}
       </div>
 
@@ -81,6 +80,25 @@ export default {
   object-fit: cover;
   height: 100%;
   width: 100%;
+}
+
+.relation{
+  display: flex;
+  align-items: center;
+  &.ANIME::before{
+    font-family: 'Material Icons Round';
+    content: 'movie_filter';
+    font-size: 1.3rem;
+    padding: 0 0.2rem;
+    color: #000c;
+  }
+  &.MANGA::before{
+    font-size: 1.3rem;
+    padding: 0 0.2rem;
+    color: #000c;
+    font-family: 'Material Icons Round';
+    content: 'import_contacts';
+  }
 }
 
 .anime-name {
