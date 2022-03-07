@@ -85,18 +85,24 @@ export default {
 .relation{
   display: flex;
   align-items: center;
-  &.ANIME::before{
+  justify-content: center;
+  font-size: 0.9rem;
+  padding: 4px 0 0 0;
+  font-style: italic;
+  opacity: 0.58;
+
+  @mixin pseudo{
     font-family: 'Material Icons Round';
-    content: 'movie_filter';
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     padding: 0 0.2rem;
-    color: #000c;
+  }
+
+  &.ANIME::before{
+    @include pseudo();
+    content: 'movie_filter';
   }
   &.MANGA::before{
-    font-size: 1.3rem;
-    padding: 0 0.2rem;
-    color: #000c;
-    font-family: 'Material Icons Round';
+    @include pseudo();
     content: 'import_contacts';
   }
 }
