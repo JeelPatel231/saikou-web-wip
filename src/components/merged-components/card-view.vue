@@ -88,7 +88,7 @@ export default {
   updated() {
     // console.log("updated ............")
     this.updateResponse();
-    this.showSlideButtons();
+    this.setSliderDisplay();
   },
   methods: {
     eval(item, arg) {
@@ -119,16 +119,24 @@ export default {
       let el = this.$refs.view;
       el.scrollLeft += side * el.offsetWidth * 0.8;
     },
-    showSlideButtons() {
-      // remove slide buttons if scroll is not needed
+    // show slide button if within offset limit
+    setSliderDisplay(){
       if (this.viewmode == "slide-view") {
         let el = this.$refs.view;
-        if (el.scrollWidth - el.clientWidth == 0) {
-          this.$refs.slideleft.remove();
-          this.$refs.slideright.remove();
-        }
+        let offset = 50
+        if (el.scrollLeft <= offset) {this.$refs.slideleft.style.display = "none";}
+        else{this.$refs.slideleft.style.display = "block";}
+
+        if (el.scrollLeft >= el.scrollLeftMax - offset) {this.$refs.slideright.style.display = "none";}
+        else{this.$refs.slideright.style.display = "block";}
+
+        this.setEventSlideButtons() // set event listener after 1 execution
       }
     },
+    setEventSlideButtons() {
+    // add event listener to the function to auto update on scroll 
+      this.$refs.view.onscroll = this.setSliderDisplay
+    }
   },
   created() {
     this.apicall();
