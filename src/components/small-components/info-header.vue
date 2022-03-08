@@ -71,7 +71,7 @@ $media-critical-point: 600px;
       "cover desc"
       "button desc";
     margin: 0 auto;
-    margin-top: 160px;
+    padding-top: 160px;
   }
 }
 .description {
