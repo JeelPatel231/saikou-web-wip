@@ -35,10 +35,10 @@ export default {
   font-size: 1rem;
   font-weight: bold;
   position: relative;
-  margin: 4px;
   overflow: hidden;
   padding: 8px 0;
-  max-width: min-content;
+  flex-grow: 1;
+  margin: 16px 16px 0 16px;
 
   img {
     object-fit: cover;
@@ -60,7 +60,7 @@ export default {
     border-bottom: 3px yellow solid;
     width: 100%;
     border-radius: 100px;
-    margin-top: 4px;
+    margin: 8px auto;
     display: block;
   }
 }

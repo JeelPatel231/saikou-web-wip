@@ -8,6 +8,11 @@
       perPage:10,
     }"/>
 
+<div style="display:flex;">
+  <GenreCard :span="true" genre="GENRES" />
+  <GenreCard :span="true" genre="TOP SCORE"/>
+</div>
+
   <h2 class="padded-32">Recently Updated</h2>
   <!-- RECENTLY UPDATED -->
   <cardview cardsize="small" nestedPath="media"  viewmode="slide-view" :query="AnilistQueries.recentlyUpdated" arrayPath="data.Page.airingSchedules" />
@@ -33,6 +38,7 @@ import carouselView from "@/components/merged-components/carousel-view.vue";
 import bottombar from "@/components/bottombar.vue";
 import cardview from "@/components/merged-components/card-view.vue";
 import { AnilistQueries } from "@/js/anilist";
+import GenreCard from "../components/small-components/genre-card.vue";
 
 export default {
   name: "Anime",
@@ -40,7 +46,8 @@ export default {
     cardview,
     bottombar,
     carouselView,
-  },
+    GenreCard
+},
   data() {
     return {
       AnilistQueries: AnilistQueries,
