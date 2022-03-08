@@ -1,6 +1,7 @@
 <template>
   <div v-bind:class="span" class="genre">
-    <img v-bind:src="imgsrc" />
+    <img v-bind:src="propsrc ? propsrc : imgsrc" />
+    <!-- use given propsrc, else use from genre-map -->
     <span class="dark-overlay" />
     <div class="genrename">
       {{ genre }}
@@ -19,7 +20,7 @@ export default {
       imgsrc: genreImageMap[this.genre],
     };
   },
-  props: ["genre", "span"],
+  props: ["genre", "span", "propsrc"],
 };
 </script>
 
