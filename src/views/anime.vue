@@ -1,6 +1,8 @@
 <template>
   <!-- TRENDING -->
-  <!-- <cardview cardsize="big" :query="AnilistQueries.searchQuery" :variables="{
+  <!-- <cardview cardsize="big" 
+      viewmode="slide-view"
+      :query="AnilistQueries.searchQuery" :variables="{
       sort:'TRENDING_DESC',
       countryOfOrigin:'JP',
       type:'ANIME',
@@ -9,7 +11,7 @@
     arrayPath="data.Page.media" /> -->
 
   <!-- RECENTLY UPDATED -->
-  <!-- <cardview cardsize="big" :query="AnilistQueries.recentlyUpdated" arrayPath="data.Page.airingSchedules" /> -->
+  <cardview cardsize="small" nestedPath="media"  viewmode="slide-view" :query="AnilistQueries.recentlyUpdated" arrayPath="data.Page.airingSchedules" />
 
   <!-- POPULAR -->
   <cardview
