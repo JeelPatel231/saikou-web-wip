@@ -51,6 +51,11 @@ $carousel-breakpoint:650px;
     display: flex;
     overflow: auto;
     scroll-snap-type: x mandatory;
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+    scrollbar-width: none;
 }
 .info-grid{
     display: grid;
