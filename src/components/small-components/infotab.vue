@@ -56,8 +56,8 @@
 </template>
 
 <script>
-import CardView from "../merged-components/card-view.vue";
-import GenreCard from "./genre-card.vue";
+import CardView from "@/components/merged-components/card-view.vue";
+import GenreCard from "@/components/small-components/genre-card.vue";
 
 export default {
   name: "infotab",

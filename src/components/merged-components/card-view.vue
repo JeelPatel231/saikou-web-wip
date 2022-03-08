@@ -55,7 +55,7 @@
 import cardSmall from "@/components/small-components/card-small.vue";
 import { executeQuery } from "@/js/anilist";
 import cardBig from "@/components/small-components/card-big.vue";
-import CharacterCard from "../small-components/character-card.vue";
+import CharacterCard from "@/components/small-components/character-card.vue";
 
 export default {
   name: "cardView",

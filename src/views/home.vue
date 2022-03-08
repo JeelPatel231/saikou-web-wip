@@ -4,7 +4,7 @@
 </template>
 
 <script>
-import bottombar from "../components/bottombar.vue";
+import bottombar from "@/components/bottombar.vue";
 
 export default {
   name: "Home",

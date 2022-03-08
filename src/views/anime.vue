@@ -27,7 +27,7 @@
 </template>
 
 <script>
-import bottombar from "../components/bottombar.vue";
+import bottombar from "@/components/bottombar.vue";
 import cardview from "@/components/merged-components/card-view.vue";
 import { AnilistQueries } from "@/js/anilist";
 
