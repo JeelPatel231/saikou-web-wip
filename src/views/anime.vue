@@ -8,10 +8,12 @@
       perPage:10,
     }"/>
 
+  <h2 class="padded-32">Recently Updated</h2>
   <!-- RECENTLY UPDATED -->
   <cardview cardsize="small" nestedPath="media"  viewmode="slide-view" :query="AnilistQueries.recentlyUpdated" arrayPath="data.Page.airingSchedules" />
 
   <!-- POPULAR -->
+  <h2 class="padded-32">Popular Anime</h2>
   <cardview
     cardsize="big"
     viewmode="grid-view"
@@ -48,4 +50,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.padded-32{
+  padding: 8px 32px;
+}
+</style>
