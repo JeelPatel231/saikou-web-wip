@@ -1,14 +1,12 @@
 <template>
   <!-- TRENDING -->
-  <!-- <cardview cardsize="big" 
-      viewmode="slide-view"
+  <carouselView 
       :query="AnilistQueries.searchQuery" :variables="{
       sort:'TRENDING_DESC',
       countryOfOrigin:'JP',
       type:'ANIME',
       perPage:10,
-    }"
-    arrayPath="data.Page.media" /> -->
+    }"/>
 
   <!-- RECENTLY UPDATED -->
   <cardview cardsize="small" nestedPath="media"  viewmode="slide-view" :query="AnilistQueries.recentlyUpdated" arrayPath="data.Page.airingSchedules" />
@@ -29,6 +27,7 @@
 </template>
 
 <script>
+import carouselView from "@/components/merged-components/carousel-view.vue";
 import bottombar from "@/components/bottombar.vue";
 import cardview from "@/components/merged-components/card-view.vue";
 import { AnilistQueries } from "@/js/anilist";
@@ -38,6 +37,7 @@ export default {
   components: {
     cardview,
     bottombar,
+    carouselView,
   },
   data() {
     return {
