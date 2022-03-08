@@ -1,9 +1,9 @@
 *{margin: 0;padding: 0;font-family: 'Poppins';}
 
 #app{
-    max-width: 1800px; /* width of anilist banners */
+    max-width: 1920px; /* width of anilist banners is 1800 */
     position: relative;
-    margin: 0 auto; /* align center if screen > 1800px */
+    margin: 0 auto; /* align center if screen > 1920px */
 }
 
 a{
