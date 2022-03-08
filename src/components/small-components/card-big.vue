@@ -62,13 +62,16 @@ export default {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  margin-bottom: 16px;
+  margin: 8px;
+  flex-grow: 1;
+  max-width: 600px;
 
   img {
     object-fit: cover;
     position: absolute;
     height: 100%;
     width: inherit;
+    width: 100%;
   }
 
   .card {
