@@ -9,8 +9,8 @@
     }"/>
 
 <div style="display:flex;">
-  <GenreCard :span="true" genre="GENRES" />
-  <GenreCard :span="true" genre="TOP SCORE"/>
+  <GenreCard :span="true" propsrc="https://s4.anilist.co/file/anilistcdn/media/anime/banner/114129-ZsLDkdwaYeJY.jpg" genre="GENRES" />
+  <GenreCard :span="true" propsrc="https://s4.anilist.co/file/anilistcdn/media/manga/banner/30002-3TuoSMl20fUX.jpg" genre="TOP SCORE"/>
 </div>
 
   <h2 class="padded-32">Recently Updated</h2>
