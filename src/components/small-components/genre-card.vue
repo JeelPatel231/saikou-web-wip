@@ -39,7 +39,7 @@ export default {
   overflow: hidden;
   padding: 8px 0;
   flex-grow: 1;
-  margin: 16px 16px 0 16px;
+  margin: 0 16px 16px 16px;
 
   img {
     object-fit: cover;
