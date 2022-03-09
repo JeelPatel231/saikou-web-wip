@@ -19,9 +19,7 @@ export function genreImageCollection() {
   query ($genre: String){
       Page(page:1,perPage:5){
           media(genre:$genre,sort:POPULARITY_DESC) {
-              coverImage{
-                  large
-              }
+              bannerImage
           }
       }
   }`;
@@ -34,12 +32,12 @@ export function genreImageCollection() {
         let imageArray = response.data.Page.media;
         while (
           Object.values(genreImageMap).includes(
-            imageArray[index].coverImage.large
+            imageArray[index].bannerImage
           )
         ) {
           index++;
         }
-        genreImageMap[genre] = imageArray[index].coverImage.large;
+        genreImageMap[genre] = imageArray[index].bannerImage;
       });
     });
   });
