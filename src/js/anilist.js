@@ -72,6 +72,7 @@ export const AnilistQueries = new (class {
           bannerImage
           coverImage {
             large
+            extraLarge
           }
           title {
             english
@@ -115,6 +116,7 @@ export const AnilistQueries = new (class {
           bannerImage
           coverImage {
             large
+            extraLarge
           }
           title {
             english

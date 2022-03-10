@@ -1,7 +1,7 @@
 <template>
 <div class="scrollparent">
     <div v-for="item in response" :key="item" class="carousel-item">
-        <div class="bannerImage" v-bind:style="{backgroundImage : `url('${item.bannerImage ? item.bannerImage : item.coverImage.large}')` }"></div>
+        <div class="bannerImage" v-bind:style="{backgroundImage : `url('${item.bannerImage ? item.bannerImage : item.coverImage.extraLarge}')` }"></div>
         <div class="info-grid">
         <img class="coverImage" :src="item.coverImage.large">
         <div class="content">
