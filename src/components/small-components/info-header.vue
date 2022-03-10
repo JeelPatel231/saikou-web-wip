@@ -61,6 +61,7 @@ $media-critical-point: 600px;
     "desc desc";
   grid-template-columns: min-content auto;
   gap: 10px;
+  padding-top: 10px;
   @media screen and (min-width: $media-critical-point) {
     grid-template-rows: 120px 90px 125px auto;
     grid-template-areas:
