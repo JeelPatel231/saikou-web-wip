@@ -1,7 +1,7 @@
 <template>
 <div class="scrollparent">
     <div v-for="item in response" :key="item" class="carousel-item">
-        <div class="bannerImage" v-bind:class="{wide:!item.bannerImage}" v-bind:style="{backgroundImage : `url('${item.bannerImage ? item.bannerImage : item.coverImage.extraLarge}')` }"></div>
+        <div class="bannerImage" v-bind:style="{backgroundImage : `url('${item.bannerImage ? item.bannerImage : item.coverImage.extraLarge}')` }"></div>
         <div class="info-grid">
         <img class="coverImage" :src="item.coverImage.large">
         <div class="content">
@@ -109,14 +109,10 @@ $carousel-breakpoint:650px;
     height: 100%;
     width: 100%;
     filter: brightness(0.6);
-    background-attachment: fixed;
-    background-position-x: center;
     background-repeat: no-repeat;
-    background-size: auto 400px; // auto {{ parent height }}
-    &.wide{
-        background-size: cover;
-        background-position-y: center;
-    }
+    background-position: 50% 35%;
+    background-position-y: 35%;
+    background-size: cover;
 }
 .coverImage{
     height: 16rem;
