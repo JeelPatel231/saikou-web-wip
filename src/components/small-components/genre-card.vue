@@ -1,5 +1,5 @@
 <template>
-  <div v-bind:class="span" class="genre">
+  <div v-bind:class="{spanned:span}" class="genre">
     <img v-bind:src="propsrc ? propsrc : imgsrc" />
     <!-- use given propsrc, else use from genre-map -->
     <span class="dark-overlay" />
@@ -27,6 +27,7 @@ export default {
 <style lang="scss">
 .genre {
   min-width: 150px;
+  max-width: 250px;
   background: #009fff;
   border-radius: 20px;
   display: flex;
@@ -64,6 +65,10 @@ export default {
     margin: 8px auto;
     display: block;
   }
+}
+
+.spanned{
+  max-width: 500px;
 }
 
 .dark-overlay {
