@@ -167,6 +167,7 @@ export const AnilistQueries = new (class {
       }
       coverImage {
         large
+        extraLarge
       }
       bannerImage
       isFavourite

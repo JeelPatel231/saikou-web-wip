@@ -2,7 +2,7 @@
   <img
     class="bannerImage"
     :src="
-      response.bannerImage ? response.bannerImage : response.coverImage.large
+      response.bannerImage ? response.bannerImage : response.coverImage.extraLarge
     "
   />
   <div class="grid">
