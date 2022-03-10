@@ -2,6 +2,7 @@
   <div v-if="Object.keys(response).length">
     <infoheader :response="response" />
     <div style="background-color: #eee">
+    <div class="padded-center-container needed-0">
       <div class="tabbar">
         <router-link :to="{ name: 'Info' }">
           <div class="tab-item">INFO</div>
@@ -21,6 +22,7 @@
         </keep-alive>
       </router-view>
     </div>
+  </div>
   </div>
 </template>
 

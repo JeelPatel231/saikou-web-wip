@@ -5,7 +5,7 @@
       response.bannerImage ? response.bannerImage : response.coverImage.extraLarge
     "
   />
-  <div class="grid">
+  <div class="grid padded-center-container">
     <img class="coverImage" :src="response.coverImage.large" />
     <div class="info color-setter">
       <div class="status">{{ response.status }}</div>
@@ -61,10 +61,8 @@ $media-critical-point: 600px;
     "desc desc";
   grid-template-columns: min-content auto;
   gap: 10px;
-  max-width: 1420px;
-  padding: 10px 30px;
   @media screen and (min-width: $media-critical-point) {
-    grid-template-rows: 110px 80px 135px auto;
+    grid-template-rows: 120px 90px 125px auto;
     grid-template-areas:
       "cover none"
       "cover info"
@@ -76,6 +74,7 @@ $media-critical-point: 600px;
 }
 .description {
   grid-area: desc;
+  margin: 10px 0;
   line-height: 1.3rem;
   @media screen and (min-width: $media-critical-point) {
     padding: 10px 0 0 20px;
@@ -83,7 +82,7 @@ $media-critical-point: 600px;
   &.collapsed {
     overflow: hidden;
     display: -webkit-box;
-    -webkit-line-clamp: 10;
+    -webkit-line-clamp: 9;
     -webkit-box-orient: vertical;
   }
 }

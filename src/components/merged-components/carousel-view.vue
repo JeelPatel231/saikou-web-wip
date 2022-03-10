@@ -2,7 +2,7 @@
 <div class="scrollparent">
     <div v-for="item in response" :key="item" class="carousel-item">
         <div class="bannerImage" v-bind:style="{backgroundImage : `url('${item.bannerImage ? item.bannerImage : item.coverImage.extraLarge}')` }"></div>
-        <div class="info-grid">
+        <div class="info-grid padded-center-container">
         <img class="coverImage" :src="item.coverImage.large">
         <div class="content">
             <div class="title">{{item.title.english ? item.title.english : item.title.userPreferred}}</div>
@@ -63,11 +63,7 @@ $carousel-breakpoint:650px;
     grid-template-rows: 1fr;
     align-items: center;
     position: relative;
-    margin: 0 auto;
-    max-width: 1200px;
-    padding: 20px;
     box-sizing: border-box;
-    width: 100%;
 
     @media screen and (max-width: $carousel-breakpoint) {
         grid-template-columns: 1fr;

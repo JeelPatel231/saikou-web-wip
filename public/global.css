@@ -1,5 +1,34 @@
 *{margin: 0;padding: 0;font-family: 'Poppins';}
 
+.padded-center-container {
+    margin:0 auto;
+    min-width:320px;
+    padding:0 20px;
+    box-sizing: border-box;
+    width:100%;
+}
+@media(min-width:1540px) {
+    .padded-center-container {
+        max-width:1520px;
+        padding:0 100px;
+    }
+}
+@media(min-width:1040px) and (max-width:1540px) {
+    .padded-center-container {
+        max-width:1140px;
+        padding:0 50px;
+    }
+}
+@media(min-width:760px) and (max-width:1040px) {
+    .padded-center-container {
+        padding:0 30px;
+    }
+}
+@media(max-width:650px){
+    .padded-center-container.needed-0 {
+        padding:0;
+    }
+}
 
 a{
     text-decoration: none;

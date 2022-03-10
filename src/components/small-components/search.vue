@@ -1,6 +1,6 @@
 <template>
   <div
-    class="searchwrapper"
+    class="searchwrapper padded-center-container"
     v-on:click.self="this.$router.push({ name: 'Search' })"
   >
     <div class="search">

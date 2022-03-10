@@ -26,7 +26,7 @@ export default {
 
 <style lang="scss">
 .genre {
-  min-width: 150px;
+  width: 150px;
   max-width: 250px;
   background: #009fff;
   border-radius: 20px;
