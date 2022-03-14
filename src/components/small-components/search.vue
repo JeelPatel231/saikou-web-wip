@@ -107,9 +107,7 @@ export default {
         genres: Object.keys(this.genrefilters).length
           ? Object.keys(this.genrefilters)
           : null, // list of all genres selected
-        search: this.$refs.searchText.value
-          ? this.$refs.searchText.value
-          : null, // because "" doesnt match anything, null makes an empty query
+        search: this.$refs.searchText.value || null, // because "" doesnt match anything, null makes an empty query
         sort: [this.sorts[this.sortfilter]], // pass sort filter as array
       };
       executeQuery(AnilistQueries.searchQuery, variables).then((x) => {

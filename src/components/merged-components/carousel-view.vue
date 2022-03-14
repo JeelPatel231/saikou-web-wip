@@ -3,14 +3,14 @@
 <div class="slide-buttons unselectable material-icons-round" v-on:click="changeCurrent(-1);resetTimer()">navigate_before</div>
 <div ref="scrollparent" class="scrollparent">
     <div v-for="item in response" :key="item" class="carousel-item">
-        <div class="bannerImage" v-bind:style="{backgroundImage : `url('${item.bannerImage ? item.bannerImage : item.coverImage.extraLarge}')` }"></div>
+        <div class="bannerImage" v-bind:style="{backgroundImage : `url('${item.bannerImage ?? item.coverImage.extraLarge}')` }"></div>
         <div class="info-grid padded-center-container">
         <router-link style="margin: 0 auto;" :to="{ name: 'Info', params: { id: item.id } }">
             <img class="coverImage" :src="item.coverImage.large">
         </router-link>
         <div class="content">
-            <div class="title">{{item.title.english ? item.title.english : item.title.userPreferred}}</div>
-            <div v-if="item.nextAiringEpisode || item.episodes" class="info">Episodes : {{item.nextAiringEpisode ? item.nextAiringEpisode.episode + " /" : ''}} {{item.episodes ? item.episodes : "~"}}</div>
+            <div class="title">{{item.title.english ?? item.title.userPreferred}}</div>
+            <div v-if="item.nextAiringEpisode || item.episodes" class="info">Episodes : {{item.nextAiringEpisode ? item.nextAiringEpisode.episode + " /" : ''}} {{item.episodes ?? "~"}}</div>
             <div v-if="item.chapters" class="info">Chapters : {{item.chapters}}</div>
         </div>
         </div>

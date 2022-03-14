@@ -3,9 +3,7 @@
     <!-- set cover image as banner if banner image is null -->
     <img
       v-lazy="{
-        src: carddata.bannerImage
-          ? carddata.bannerImage
-          : carddata.coverImage.large,
+        src: carddata.bannerImage ?? carddata.coverImage.large,
       }"
     />
     <span class="gradient-overlay" />
