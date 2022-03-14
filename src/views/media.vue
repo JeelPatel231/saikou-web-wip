@@ -2,15 +2,17 @@
   <div v-if="Object.keys(response).length">
     <infoheader :response="response" />
     <div style="background-color: #eee">
-    <div class="padded-center-container needed-0">
-      <div class="tabbar">
+      <div class="tab-wrapper">
+        <div class="tabbar padded-center-container">
         <router-link :to="{ name: 'Info' }">
           <div class="tab-item">INFO</div>
         </router-link>
         <router-link :to="{ name: 'Watch' }">
           <div class="tab-item">WATCH</div>
         </router-link>
+        </div>
       </div>
+    <div class="padded-center-container needed-0">
       <router-view
         name="tab"
         :id="this.$route.params.id"
@@ -50,18 +52,20 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.tab-wrapper{
+  background: #ffff;
+  top: 0;
+  position: sticky;
+  box-shadow: 0px 4px 8px 0 #60606070;
+  z-index: 2;
+}
 .tabbar {
   display: flex;
   text-align: center;
   align-items: center;
   font-size: 1.3rem;
-  background: #ffff;
   flex: 1;
   font-weight: 700;
-  top: 0;
-  position: sticky;
-  z-index: 2;
-  box-shadow: 0px 4px 8px 0 #60606070;
   & > * {
     flex: 1;
     padding: 10px 0;
