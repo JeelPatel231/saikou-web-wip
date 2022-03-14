@@ -5,7 +5,9 @@
     <div v-for="item in response" :key="item" class="carousel-item">
         <div class="bannerImage" v-bind:style="{backgroundImage : `url('${item.bannerImage ? item.bannerImage : item.coverImage.extraLarge}')` }"></div>
         <div class="info-grid padded-center-container">
-        <img class="coverImage" :src="item.coverImage.large">
+        <router-link style="margin: 0 auto;" :to="{ name: 'Info', params: { id: item.id } }">
+            <img class="coverImage" :src="item.coverImage.large">
+        </router-link>
         <div class="content">
             <div class="title">{{item.title.english ? item.title.english : item.title.userPreferred}}</div>
             <div v-if="item.nextAiringEpisode || item.episodes" class="info">Episodes : {{item.nextAiringEpisode ? item.nextAiringEpisode.episode + " /" : ''}} {{item.episodes ? item.episodes : "~"}}</div>
@@ -184,7 +186,6 @@ $carousel-breakpoint:650px;
 }
 .coverImage{
     height: 16rem;
-    margin: 0 auto;
     border-radius: 16px;
     box-shadow: 0px 0px 16px 0 #6060608c;
 }
