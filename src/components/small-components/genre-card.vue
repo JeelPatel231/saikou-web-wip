@@ -24,7 +24,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .genre {
   width: 150px;
   max-width: 250px;

@@ -126,7 +126,7 @@ export default {
 };
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .searchresults {
   display: flex;
   font-size: 1.6rem;
