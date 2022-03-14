@@ -63,7 +63,12 @@ export default {
     },
     updated(){
         this.resetTimer()
-    }
+    },
+    watch:{
+        $route(){
+            clearInterval(this.myTimer)
+        }
+    } 
 }
 </script>
 
