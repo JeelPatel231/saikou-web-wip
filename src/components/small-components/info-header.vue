@@ -128,8 +128,11 @@ img.coverImage {
   box-shadow: 0px 0px 32px 0 #606060c9;
   height: 200px;
   grid-area: cover;
+  max-width: 140px;
+  object-fit: cover;
   @media screen and (min-width: $media-critical-point) {
     height: 350px;
+    max-width: 250px;
   }
 }
 </style>
