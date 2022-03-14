@@ -58,6 +58,8 @@ export default {
 .genrename {
   color: #fff;
   position: relative;
+  padding: 4px;
+  font-size: 1.2rem;
   span {
     border-bottom: 3px yellow solid;
     width: 100%;
