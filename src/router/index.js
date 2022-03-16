@@ -24,9 +24,10 @@ const routes = [
     component: Manga,
   },
   {
-    path: "/search",
+    path: "/search/:fragment",
     name: "Search",
     component: Search,
+    props:true,
   },
   {
     path: "/media/",
