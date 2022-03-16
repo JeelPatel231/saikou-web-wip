@@ -72,7 +72,7 @@ export default {
   min-width: 20px;
   flex: 1;
   color: white;
-  font-size: 40px;
+  font-size: 32px;
   display: flex;
   align-items: center;
   justify-content: center;

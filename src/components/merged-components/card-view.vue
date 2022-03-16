@@ -28,7 +28,7 @@
         <div
           v-if="pagination"
           v-on:click="apicall()"
-          class="material-icons-round expandmore"
+          class="material-icons-round expandmore unselectable"
         >
           expand_more
         </div>
