@@ -1,11 +1,11 @@
 <template>
   <!-- TRENDING -->
-  <Headbar fragment="anime" />
+  <Headbar :fragment="fragment.toUpperCase()" />
   <carouselView 
       :query="AnilistQueries.searchQuery" :variables="{
       sort:'TRENDING_DESC',
       countryOfOrigin:'JP',
-      type:'ANIME',
+      type:fragment.toUpperCase(),
       perPage:10,
     }"/>
 <div class="padded-center-container needed-0">
@@ -16,7 +16,12 @@
 
   <h2 class="padded-32">Recently Updated</h2>
   <!-- RECENTLY UPDATED -->
-  <cardview cardsize="small" nestedPath="media"  viewmode="slide-view" :query="AnilistQueries.recentlyUpdated" arrayPath="data.Page.airingSchedules" />
+  <cardview cardsize="small" 
+    nestedPath="media"
+    viewmode="slide-view"
+    :query="AnilistQueries.recentlyUpdated"
+    :variables="{type: fragment.toUpperCase(),}"
+    arrayPath="data.Page.airingSchedules" />
 
   <!-- POPULAR -->
   <h2 class="padded-32">Popular Anime</h2>
@@ -26,7 +31,7 @@
     :query="AnilistQueries.searchQuery"
     :variables="{
       countryOfOrigin: 'JP',
-      type: 'ANIME',
+      type: fragment.toUpperCase(),
     }"
     arrayPath="data.Page.media"
     :pagination="true"
@@ -54,6 +59,7 @@ export default {
 },
   data() {
     return {
+      fragment:"anime",
       AnilistQueries: AnilistQueries,
     };
   },
