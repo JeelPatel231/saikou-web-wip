@@ -9,7 +9,7 @@
       perPage:10,
     }"/>
 <div class="padded-center-container needed-0">
-<div style="display:flex;margin-top: 32px;justify-content: center;">
+<div style="display:flex;margin-top: 32px;justify-content: center;padding: 0 16px;">
   <GenreCard :span="true" propsrc="https://s4.anilist.co/file/anilistcdn/media/anime/banner/114129-ZsLDkdwaYeJY.jpg" genre="GENRES" />
   <GenreCard :span="true" propsrc="https://s4.anilist.co/file/anilistcdn/media/manga/banner/30002-3TuoSMl20fUX.jpg" genre="TOP SCORE"/>
 </div>
