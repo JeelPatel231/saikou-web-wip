@@ -14,7 +14,7 @@
 
 <script>
 export default{
-    name:"header",
+    name:"headbar",
     props:["fragment"]
 }
 </script>
