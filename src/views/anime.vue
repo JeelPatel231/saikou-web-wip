@@ -1,5 +1,6 @@
 <template>
   <!-- TRENDING -->
+  <Header fragment="anime" />
   <carouselView 
       :query="AnilistQueries.searchQuery" :variables="{
       sort:'TRENDING_DESC',
@@ -40,6 +41,7 @@ import bottombar from "@/components/bottombar.vue";
 import cardview from "@/components/merged-components/card-view.vue";
 import { AnilistQueries } from "@/js/anilist";
 import GenreCard from "../components/small-components/genre-card.vue";
+import Header from "../components/small-components/header.vue";
 
 export default {
   name: "Anime",
@@ -47,7 +49,8 @@ export default {
     cardview,
     bottombar,
     carouselView,
-    GenreCard
+    GenreCard,
+    Header
 },
   data() {
     return {

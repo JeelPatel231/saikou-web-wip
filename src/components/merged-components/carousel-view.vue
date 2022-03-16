@@ -130,6 +130,9 @@ $carousel-breakpoint:650px;
         display: none;
     }
     scrollbar-width: none;
+    @media screen and (max-width: $carousel-breakpoint) {
+        height: 500px;
+    }
 }
 .info-grid{
     display: grid;
@@ -138,6 +141,7 @@ $carousel-breakpoint:650px;
     align-items: center;
     position: relative;
     box-sizing: border-box;
+    margin-top: 80px;
 
     @media screen and (max-width: $carousel-breakpoint) {
         grid-template-columns: 1fr;
