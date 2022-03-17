@@ -8,7 +8,8 @@
           <div class="tab-item">INFO</div>
         </router-link>
         <router-link :to="{ name: 'Watch' }">
-          <div class="tab-item">WATCH</div>
+          <div v-if="(['MANGA','NOVEL','ONE_SHOT'].includes(response.format))" class="tab-item">READ</div>
+          <div v-else class="tab-item">WATCH</div>
         </router-link>
         </div>
       </div>
