@@ -8,12 +8,7 @@
       type:fragment.toUpperCase(),
       perPage:10,
     }"/>
-<div class="padded-center-container needed-0">
-<div style="display:flex;margin-top: 32px;justify-content: center;padding: 0 16px;">
-  <GenreCard :span="true" propsrc="https://s4.anilist.co/file/anilistcdn/media/anime/banner/114129-ZsLDkdwaYeJY.jpg" genre="GENRES" />
-  <GenreCard :span="true" propsrc="https://s4.anilist.co/file/anilistcdn/media/manga/banner/30002-3TuoSMl20fUX.jpg" genre="TOP SCORE"/>
-</div>
-
+<div style="margin-top: 8px;" class="padded-center-container needed-0">
   <h2 class="padded-32">Recently Updated</h2>
   <!-- RECENTLY UPDATED -->
   <cardview cardsize="small" 
@@ -45,7 +40,6 @@ import carouselView from "@/components/merged-components/carousel-view.vue";
 import bottombar from "@/components/bottombar.vue";
 import cardview from "@/components/merged-components/card-view.vue";
 import { AnilistQueries } from "@/js/anilist";
-import GenreCard from "../components/small-components/genre-card.vue";
 import Headbar from "../components/small-components/header.vue";
 
 export default {
@@ -54,7 +48,6 @@ export default {
     cardview,
     bottombar,
     carouselView,
-    GenreCard,
     Headbar
 },
   data() {
