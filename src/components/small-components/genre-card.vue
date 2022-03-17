@@ -1,5 +1,5 @@
 <template>
-  <div v-bind:class="{spanned:span}" class="genre">
+  <div v-bind:class="{spanned:span}" class="genre unselectable">
     <img v-bind:src="propsrc ?? imgsrc" />
     <!-- use given propsrc, else use from genre-map -->
     <span class="dark-overlay" />

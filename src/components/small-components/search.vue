@@ -1,9 +1,9 @@
 <template>
-<div class="padded-center-container">
+<div class="padded-center-container unselectable">
     <div class="searchgroup">
         <input ref="searchText" v-on:change="search()" v-bind:fragment="fragment" type="text" required="required" spellcheck="false" autocorrect="off">
         <label>{{ fragment }}</label>
-        <span v-on:click="search()" class="search-button unselectable material-icons-round">search</span>
+        <span v-on:click="search()" class="search-button material-icons-round">search</span>
     </div>
     <div class="filters">
         <div class="filter-list">
@@ -32,7 +32,7 @@
             </div>
         </div>
         <div class="genre-chips">
-            <div class="chip unselectable"
+            <div class="chip"
                 v-on:click="delete genrefilters[filter]"
                 v-for="filter in Object.keys(genrefilters)"
                 :key="filter">
