@@ -22,7 +22,7 @@ export default{
 <style lang="scss">
 .navbar{
     display: flex;
-    height: 60px;
+    height: 48px;
     position: absolute;
     top: 20px;
     left: 0;
@@ -31,10 +31,11 @@ export default{
     z-index:1;
 }
 .buttons{
-    font-size: 2.4rem;
+    font-size: 2rem;
     background: #333;
     align-items: center;
-    padding: 0 16px;
+    padding: 0 8px;
+    line-height: 48px;
     border-radius: 100px;
     display: flex;
     color: #fff;
@@ -46,8 +47,8 @@ export default{
 .logo{
     background-image: url("/logo.svg");
     height:100%;
-    width: 60px;
-    background-size: 90px;
-    background-position: -15px;
+    width: 48px;
+    background-size: 72px;
+    background-position: -12px;
 }
 </style>

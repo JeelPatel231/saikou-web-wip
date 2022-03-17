@@ -58,8 +58,8 @@ export default {
 }
 
 .pill {
-  height: 60px;
-  width: 250px;
+  height: 48px;
+  width: 192px;
   background: #1b1b1b;
   border-radius: 30px;
   display: flex;
@@ -72,7 +72,7 @@ export default {
   min-width: 20px;
   flex: 1;
   color: white;
-  font-size: 32px;
+  font-size: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
