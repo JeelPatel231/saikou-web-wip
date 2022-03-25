@@ -28,8 +28,20 @@
         `${details.endDate.year}-${details.endDate.month}-${details.endDate.day}`
       }}</span>
     </div>
+    <h2 class="padded-32">Synonyms</h2>
+    <div class="genre-chips unselectable padded-32">
+      <div v-for="synonym in details.synonyms" :key="synonym" class="chip">{{synonym}}</div>
+    </div>
+    <h2 class="padded-32">Trailer</h2>
+    <div class="padded-32">
+      <video class="trailer-video" controls :src="ytsrc" />
+    </div>
+    <h2 class="padded-32">Tags</h2>
+    <div class="genre-chips unselectable padded-32">
+      <div v-for="tag in details.tags" :key="tag" class="chip">{{tag.name}} : {{tag.rank}}%</div>
+    </div>
     <h2 class="padded-32">Genres</h2>
-    <div class="genre-view padded-32">
+    <div class="genre-view unselectable padded-32">
       <GenreCard v-for="genre in details.genres" :key="genre" :genre="genre" />
     </div>
     <h2 class="padded-32">Characters</h2>
@@ -63,6 +75,25 @@ export default {
   name: "infotab",
   props: ["details", "id"], // id here to suppress props pass warning
   components: { CardView, GenreCard },
+  data(){
+    return{
+      ytsrc : null,
+      invidiousHost:"https://vid.puffyan.us",
+    }
+  },
+  methods:{
+    getVideoLinks(){
+      fetch(`${this.invidiousHost}/api/v1/videos/${this.details.trailer.id}?fields=formatStreams`).then(x=>x.json())
+      .then((x)=>{
+        var listurl = x.formatStreams;
+        console.log(listurl)
+        this.ytsrc = listurl[listurl.length - 1].url
+      })
+    }
+  },
+  created(){
+    this.getVideoLinks()
+  }
 };
 </script>
 
@@ -92,5 +123,38 @@ export default {
   @media screen and (max-width: 600px) {
     justify-content: center;
   }
+}
+.trailer-video{
+  width: 100%;
+  max-width: 720px;
+  border-radius: 16px;
+}
+.genre-chips{
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    overflow-x: auto;
+    @media screen and (max-width: 700px) {
+      flex-wrap: nowrap;
+      scrollbar-width: none;
+      &::-webkit-scrollbar {
+          display: none;
+      }
+    }
+}
+.chip{
+    border: 2px #0101017d solid;
+    line-height: 36px;
+    margin: 10px 10px 0 0;
+    border-radius: 12px;
+    padding: 0 10px;
+    font-weight: 700;
+    min-width: max-content;
+    color: #111;
+    transition: 200ms ease;
+    background: #fff;
+
+    display: flex;
+    align-items: center;
 }
 </style>
