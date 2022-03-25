@@ -138,6 +138,14 @@ export const AnilistQueries = new (class {
   mediaInfo = `
   query ($id: Int){
     Media(id: $id) {
+      synonyms
+      trailer {
+        id
+      }
+      tags {
+        name
+        rank
+      }
       mediaListEntry {
         id
         status
