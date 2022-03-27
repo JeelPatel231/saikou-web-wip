@@ -18,6 +18,7 @@
         name="tab"
         :id="this.$route.params.id"
         :details="response"
+        :fragment="['MANGA','NOVEL','ONE_SHOT'].includes(response.format) ? 'MANGA' : 'ANIME'"
         v-slot="{ Component }"
       >
         <keep-alive>
