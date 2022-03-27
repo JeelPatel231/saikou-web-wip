@@ -19,7 +19,7 @@ export default{
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .navbar{
     display: flex;
     height: 48px;
