@@ -32,8 +32,8 @@
     <div class="genre-chips unselectable padded-32">
       <div v-for="synonym in details.synonyms" :key="synonym" class="chip">{{synonym}}</div>
     </div>
-    <h2 class="padded-32">Trailer</h2>
-    <div class="padded-32">
+    <h2 v-if="details.trailer" class="padded-32">Trailer</h2>
+    <div v-if="details.trailer" class="padded-32">
       <video class="trailer-video" controls :src="ytsrc" />
     </div>
     <h2 class="padded-32">Tags</h2>
@@ -73,7 +73,7 @@ import GenreCard from "@/components/small-components/genre-card.vue";
 
 export default {
   name: "infotab",
-  props: ["details", "id"], // id here to suppress props pass warning
+  props: ["details", "id", "fragment"], // id here to suppress props pass warning
   components: { CardView, GenreCard },
   data(){
     return{
@@ -83,6 +83,7 @@ export default {
   },
   methods:{
     getVideoLinks(){
+      if(!this.details.trailer) return 
       fetch(`${this.invidiousHost}/api/v1/videos/${this.details.trailer.id}?fields=formatStreams`).then(x=>x.json())
       .then((x)=>{
         var listurl = x.formatStreams;
